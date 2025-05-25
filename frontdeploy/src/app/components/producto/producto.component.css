@@ -1,0 +1,88 @@
+.formulario-producto {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  label {
+    padding-left: 30px;
+    padding-right: 50px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    padding-left: 5px;
+    margin-top: 10px;
+  }
+  
+  input:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+  
+  .botones {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    gap: 10px; /* Espacio entre botones */
+    margin-top: 20px; /* Espacio arriba si quieres */
+  }
+  
+  .guardar-btn,
+  .cancelar-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .demo-button{
+    background-color: #007BFF;
+    color: white;
+  }
+
+  .mat-icon {
+    cursor: pointer;          /* Cambia el cursor a una mano */
+    transition: 0.3s;         /* Suaviza la animación */
+    padding: 8px;             /* Espacio interno */
+    border-radius: 50%;       /* Forma redondeada */
+  }
+  
+  .mat-icon:hover {
+    color: #b62a2a; /* Cambia el fondo al pasar el mouse */
+    transform: scale(1.1);     /* Agranda un poco el icono */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  }
+  
+  /*---------------tabla-------------*/
+
+  .mat-elevation-z8{
+    background-color:rgb(31, 29, 29);
+    margin-bottom: 25px;
+  }
+  /* Responsive */
+  @media (max-width: 600px) {
+    .formulario-producto {
+      padding: 20px;
+      margin: 20px;
+    }
+  
+    .formulario-producto h2 {
+      font-size: 1.3rem;
+    }
+  
+    input[type="text"],
+    input[type="number"] {
+      font-size: 15px;
+    }
+  }

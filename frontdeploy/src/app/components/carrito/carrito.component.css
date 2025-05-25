@@ -1,0 +1,99 @@
+.container-carrito {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+  background-color:#94095c; 
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.contenido-card{
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center; /* centra horizontalmente las cajas */
+    gap: 20px; /* espacio entre los divs */
+    padding: 16px;
+}
+.imagenCard{
+    align-items: center;
+    justify-content: center;
+}
+.contenido-card img{
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+.titulo {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  font-weight: bold;
+  color: whitesmoke;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px; /* Espacio entre cada card */
+  
+}
+
+mat-card {
+  width: 100%;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-image {
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+mat-card-title, mat-card-subtitle {
+  text-align: left;
+}
+
+mat-card-content p {
+  margin: 4px 0;
+}
+
+.boton-comprar {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+.delete-button{
+    background-color:rgb(224, 10, 10);
+    color: whitesmoke;  }
+
+.delete-button:hover{
+    background-color: red;
+
+}
+
+.demo-button{
+    background-color: whitesmoke;
+    color: black;  }
+
+.demo-button:hover{
+    background-color:#34df53;
+}
+.nombreCategoria{
+    color: black;
+}
+@media (max-width: 600px) {
+  .container {
+    padding: 8px;
+  }
+
+  mat-card {
+    padding: 12px;
+  }
+
+  .titulo {
+    font-size: 1.5rem;
+  }
+}

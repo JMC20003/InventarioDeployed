@@ -1,0 +1,55 @@
+.sidenav-container {
+    height: 64px;
+  }
+  
+  .logo-nombre {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    height: 50px;
+    width: 50px;
+    margin-right: 8px;
+  }
+  
+  .nombre-empresa {
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .menu-button {
+    display: none;
+    color: white;
+  }
+  a:hover{
+    background-color: #94095c;
+  }
+  button:hover{
+    background-color: #94095c;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+  
+    .menu-button {
+      display: inline-flex;
+    }
+  }
+  
+  .sidenav {
+    width: 200px;
+  }
+  

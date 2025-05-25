@@ -1,0 +1,15 @@
+<div class="detalle-container" *ngIf="producto as p; else cargando">
+  <img class="detalle-imagen" [src]="p.imagen" alt="{{ p.nombre }}" >
+  <div class="detalle-info">
+    <h2>{{ producto.nombre }}</h2>
+    <p class="precio"><strong>Precio:</strong> {{ p.precio | currency:'USD' }}</p>
+    <p><strong>Stock:</strong> {{ p.stock }}</p>
+    <p><strong>Categoría:</strong> {{ p.categoria }}</p>
+    <button mat-raised-button color="primary" routerLink="/carrito" (click)="guardarEnCarrito(producto)">Añadir al carrito</button>
+  </div>
+ 
+</div>
+
+<ng-template #cargando>
+  <p>Cargando producto...</p>
+</ng-template>

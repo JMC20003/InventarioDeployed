@@ -1,0 +1,52 @@
+ <mat-sidenav-container class="sidenav-container">
+  <!-- Sidenav para pantallas pequeñas -->
+  <mat-sidenav #sidenav mode="over" class="sidenav" fixedInViewport>
+    <mat-nav-list>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Categorías</mat-panel-title>
+        </mat-expansion-panel-header>
+        <a mat-list-item routerLink="/categorias/adultos" (click)="sidenav.close()">Adultos</a>
+        <a mat-list-item routerLink="/categorias/ninos" (click)="sidenav.close()">Niños</a>
+      </mat-expansion-panel>
+      <a mat-list-item routerLink="/contacto" (click)="abrirFormularioContacto(); sidenav.close()">Contáctanos</a>
+      <a  mat-list-item routerLink="/producto" (click)="sidenav.close()" *ngIf="isAdmin()">Registrar Producto</a>
+      <a mat-list-item routerLink="/carrito" (click)="sidenav.close()">🛒 Ver carrito</a>
+      <a  mat-list-item routerLink="/login" (click)="sidenav.close()">Inicia Sesion</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- Barra superior -->
+    <mat-toolbar color="primary">
+      <div class="logo-nombre">
+        <img src="https://i.postimg.cc/63KBTFGb/logo-Proyecto-removebg-preview.png" alt="Logo" class="logo" />
+        <span routerLink="/inicio" class="nombre-empresa">Mi Tienda</span>
+      </div>
+
+      <span class="spacer"></span>
+
+      <!-- Menú para pantallas grandes -->
+      <nav class="nav-links">
+        <button mat-button [matMenuTriggerFor]="menuCategorias">Categorías</button>
+        <a mat-button (click)="abrirFormularioContacto(); sidenav.close()" routerLink="/contacto">Contáctanos</a>
+        <a mat-button routerLink="/producto" *ngIf="isAdmin()">Registrar Producto</a>
+        <a mat-button routerLink="/carrito">🛒 Ver carrito</a>
+        <a mat-button routerLink="/login">Inicia Sesion</a>
+      </nav>
+
+      <!-- Ícono hamburguesa para pantallas pequeñas -->
+      <button mat-icon-button class="menu-button" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Menú desplegable de Categorías -->
+    <mat-menu #menuCategorias="matMenu">
+      <button mat-menu-item routerLink="/categorias/adultos">Adultos</button>
+      <button mat-menu-item routerLink="/categorias/ninos">Niños</button>
+    </mat-menu>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+  

@@ -1,0 +1,44 @@
+<!-- carrito.component.html -->
+<div class="container">
+    <div class="container-carrito">
+    <h1 class="titulo">Carrito de Compras</h1>
+
+    <div class="cards">
+        <mat-card *ngFor="let producto of productosCarrito" class="producto-card">
+        <div class="contenido-card">
+            <div class="imagenCard">
+                <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}" class="imagen-producto">
+            </div>
+            
+
+            <div class="info-producto">
+            <mat-card-header class="nombreCategoria">
+                <mat-card-title class="nombreCategoria" >{{ producto.nombre }}</mat-card-title>
+                <mat-card-subtitle class="nombreCategoria" >Categoría: {{ producto.categoria }}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <p><strong>Cantidad:</strong> 1 </p>
+                <p><strong>Precio:</strong> {{ producto.precio }}</p>
+                <p><strong>Descripcion:</strong> {{ producto.cantidad }}</p>
+            </mat-card-content>
+
+            <mat-card-actions class="acciones-card">
+                <button  class="delete-button" mat-raised-button  (click)="eliminarDelCarrito(producto.id)">
+                Eliminar
+                </button>
+            </mat-card-actions>
+            </div>
+        </div>
+        </mat-card>
+    </div>
+
+    <div class="boton-comprar">
+        <button class="demo-button" mat-raised-button  (click)="comprarPorWhatsapp()">
+        Comprar por WhatsApp
+        </button>
+    </div>
+    </div>
+</div>
+
+

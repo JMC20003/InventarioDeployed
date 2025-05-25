@@ -1,0 +1,13 @@
+<h2>Productos Adultos</h2>
+<div *ngIf="productosAdultos.length === 0">
+  No hay productos para adultos disponibles.
+</div>
+<div class="productos-container" *ngIf="productosAdultos.length > 0">
+  <mat-card class="producto-card" *ngFor="let producto of productosAdultos" [routerLink]="['/producto-detalle', producto.id]">
+    <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}">
+    <mat-card-content>
+      <h3>{{ producto.nombre }}</h3>
+      <h3> stock: {{ producto.stock }}</h3>
+      <p class="precio">{{ producto.precio | currency:'USD' }}</p>
+    </mat-card-content>
+  </mat-card>

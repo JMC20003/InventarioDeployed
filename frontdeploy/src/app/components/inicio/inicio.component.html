@@ -1,0 +1,21 @@
+ 
+<div class="inicio-container">
+  <header class="intro">
+    <h1>Bienvenidos a Nuestra Empresa</h1>
+    <h2>Calidad y confianza a tu servicio</h2>
+    <p>
+      Somos una empresa dedicada a brindar los mejores productos y servicios para satisfacer las necesidades de nuestros clientes.
+      Nuestro compromiso es la excelencia y la innovación constante.
+    </p>
+  </header>
+   <section class="cards-container">
+    <mat-card class="card" *ngFor="let card of productos">
+      <img mat-card-image [src]="card.imagen" alt="{{ card.precio }}" />
+      <mat-card-content>
+        <h3>{{ card.precio }}</h3>
+        <p>{{ card.descripcion }}</p>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  
