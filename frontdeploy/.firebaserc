@@ -2,7 +2,9 @@
   "projects": {
     "default": "proyecto5-e5bb9",
     "groupby-test": "proyecto5-e5bb9",
-    "tester": "proyecto5-e5bb9"
+    "tester": "proyecto5-e5bb9",
+    "deployFront": "tabal-ed9a9",
+    "deployfront": "proyecto5-e5bb9"
   },
   "targets": {},
   "etags": {}

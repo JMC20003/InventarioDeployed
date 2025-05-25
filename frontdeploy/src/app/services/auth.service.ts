@@ -29,7 +29,7 @@ interface JwtPayload {
 })
 export class AuthService {
   private baseUrl = 'http://localhost:8080/auth';
-  private localStorage ="";
+
   constructor(private http: HttpClient) { }
 
   login(data: AuthRequest): Observable<any> {
@@ -40,23 +40,8 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/register`, data);
   }
 
-  guardarToken(token: string) {
-    localStorage.setItem('token', token);
-  }
-
-  obtenerToken(): string | null {
-    return localStorage.getItem('token');
-  }
-
-  cerrarSesion() {
-    localStorage.removeItem('token');
-  }
-
-  estaAutenticado(): boolean {
-    return !!this.obtenerToken();
-  }
-
   getUserRole(): string[] {
+  if (typeof window === 'undefined') return []; // No hay localStorage en servidor
   const token = localStorage.getItem('token');
   if (!token) return [];
   try {
@@ -68,11 +53,35 @@ export class AuthService {
   }
 }
 
-hasRole(role: string): boolean {
-  return this.getUserRole().includes(role);
-}
+  hasRole(role: string): boolean {
+    if (typeof window === 'undefined') return false;
+    return this.getUserRole().includes(role);
+  }
 
   isAdmin(): boolean {
+    if (typeof window === 'undefined') return false;
     return this.getUserRole().includes('ROLE_ADMIN');
+  }
+
+  guardarToken(token: string) {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('token', token);
+    }
+  }
+
+  obtenerToken(): string | null {
+    if (typeof window === 'undefined') return null;
+    return localStorage.getItem('token');
+  }
+
+  cerrarSesion() {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('token');
+    }
+  }
+
+  estaAutenticado(): boolean {
+    if (typeof window === 'undefined') return false;
+    return !!this.obtenerToken();
   }
 }
