@@ -8,14 +8,14 @@
   }
 
   .logo {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     margin-right: 8px;
   }
   
   .nombre-empresa {
     font-weight: bold;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 20px;
   }
   

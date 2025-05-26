@@ -7,17 +7,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductoServiceService {
 
+  private baseUrl = 'https://proyecto5-e5bb9.web.app/api/productos';
+
   constructor(private clientHTTP: HttpClient ) { }
   getAllProducts(){
-    return this.clientHTTP.get<Producto[]>("http://localhost:8080/api/productos/listar")
+    return this.clientHTTP.get<Producto[]>(this.baseUrl + "/listar")
   }
   postProduct(producto: Producto){
-    return this.clientHTTP.post<Producto>("http://localhost:8080/api/productos/registrar",producto)
+    return this.clientHTTP.post<Producto>(this.baseUrl +"/registrar",producto)
   }
   deleteProduct(id: number) {
-    return this.clientHTTP.delete("http://localhost:8080/api/productos/eliminar/"+ id.toString());
+    return this.clientHTTP.delete(this.baseUrl +"/eliminar/"+ id.toString());
   }
   obtenerProductoPorId(id: number) {
-  return this.clientHTTP.get<Producto>("http://localhost:8080/api/productos/"+ id.toString());
+  return this.clientHTTP.get<Producto>(this.baseUrl + id.toString());
   }
 }

@@ -28,7 +28,7 @@ interface JwtPayload {
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8080/auth';
+  private baseUrl = 'https://proyecto5-e5bb9.web.app/auth';
 
   constructor(private http: HttpClient) { }
 
