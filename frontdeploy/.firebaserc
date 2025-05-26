@@ -5,7 +5,9 @@
     "tester": "proyecto5-e5bb9",
     "deployFront": "tabal-ed9a9",
     "deployfront": "proyecto5-e5bb9",
-    "frontdeploy": "proyecto5-e5bb9"
+    "frontdeploy": "proyecto5-e5bb9",
+    "deployed": "proyecto5-e5bb9",
+    "deploy": "proyecto5-e5bb9"
   },
   "targets": {},
   "etags": {}

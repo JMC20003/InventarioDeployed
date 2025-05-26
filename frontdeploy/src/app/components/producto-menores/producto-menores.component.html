@@ -1,6 +1,6 @@
 <h2>Productos Niños</h2>
 <div *ngIf="productosNinos.length === 0">
-  No hay productos para adultos disponibles.
+  No hay productos para niños disponibles.
 </div>
 <div class="productos-container" *ngIf="productosNinos.length > 0">
   <mat-card class="producto-card" *ngFor="let producto of productosNinos" [routerLink]="['/producto-detalle', producto.id]">

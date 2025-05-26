@@ -38,12 +38,18 @@
   justify-content: center;
   gap: 25px;
   flex-wrap: wrap;
+
 }
 
 .card {
   width: 320px;
   cursor: pointer;
   transition: transform 0.3s ease;
+}
+.card img{
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .card:hover {
@@ -57,16 +63,21 @@ mat-card-content h3 {
 }
 
 mat-card-content p {
-  color: #666;
+   color: rgb(0, 132, 255);
 }
 .card h3{
-  color: white;
+  color: rgb(0, 0, 0);
   margin-top: 10px;
 }
-.card p{
-  color: whitesmoke;
+.nombre{
+  color: black;
 }
-
+.precio {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
+    color: rgb(0, 132, 255);
+  }
 /* Responsive para móviles y tablets */
 @media (max-width: 768px) {
   .cards-container {

@@ -10,10 +10,11 @@
   </header>
    <section class="cards-container">
     <mat-card class="card" *ngFor="let card of productos">
-      <img mat-card-image [src]="card.imagen" alt="{{ card.precio }}" />
+      <img mat-card-image [src]="card.imagen" alt="{{ card.precio }}" [routerLink]="['/producto-detalle', card.id]" />
       <mat-card-content>
-        <h3>{{ card.precio }}</h3>
-        <p>{{ card.descripcion }}</p>
+        <h2 class="nombre">{{ card.nombre }}</h2>
+        <p class="precio"><strong>Precio:</strong> {{ card.precio | currency:'USD' }}</p>
+        <h3>Stock: {{ card.stock}}</h3>
       </mat-card-content>
     </mat-card>
   </section>

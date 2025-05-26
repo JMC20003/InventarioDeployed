@@ -30,7 +30,7 @@
   
   .menu-button {
     display: none;
-    color: white;
+    color: rgb(0, 0, 0);
   }
   a:hover{
     background-color: #94095c;

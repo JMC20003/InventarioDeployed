@@ -1,88 +1,287 @@
+/* Importar fuentes (si no lo has hecho globalmente en styles.css) */
+/*@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+*/
+body {
+  font-family: 'Inter', sans-serif; /* Usar Inter como fuente principal */
+}
+
+/* -------------------------------------------------------------------------- */
+/* ESTILOS GENERALES Y DE FORMULARIO                                          */
+/* -------------------------------------------------------------------------- */
+
 .formulario-producto {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #f4f4f4;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-sizing: border-box;
+  max-width: 600px; /* Un poco más ancho para mejor distribución */
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff; /* Fondo blanco para consistencia */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12); /* Sombra más pronunciada */
+  box-sizing: border-box;
+}
+
+.formulario-producto h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* Estilos para los campos de Material Design (mat-form-field) */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px; /* Espacio entre campos */
+}
+
+/* Estilo para los input nativos si los usas, o para override de matInput */
+input[type="text"],
+input[type="number"],
+input[type="email"], /* Añadido para email si lo usas */
+input[type="password"] { /* Añadido para password si lo usas */
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px; /* Bordes más redondeados */
+  font-size: 1rem; /* Tamaño de fuente relativo */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: calc(100% - 24px); /* Ajuste para el padding */
+  box-sizing: border-box; /* Incluir padding en el ancho */
+}
+
+input:focus {
+  border-color: #4CAF50; /* Verde vibrante al enfocar */
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2); /* Sombra suave al enfocar */
+  outline: none;
+}
+
+/* Contenedor de botones */
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Más espacio entre botones */
+  margin-top: 30px;
+}
+
+/* Estilos para los botones */
+.guardar-btn,
+.cancelar-btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px; /* Bordes más redondeados */
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.guardar-btn {
+  background-color: #4CAF50; /* Verde primario */
+  color: white;
+}
+
+.guardar-btn:hover {
+  background-color: #43A047; /* Verde más oscuro al pasar el ratón */
+  transform: translateY(-2px); /* Pequeño levantamiento */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cancelar-btn {
+  background-color: #E0E0E0; /* Gris claro */
+  color: #555;
+}
+
+.cancelar-btn:hover {
+  background-color: #D6D6D6; /* Gris más oscuro al pasar el ratón */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos genéricos para iconos de Material (aplicable a iconos en formulario y tabla) */
+mat-icon {
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 6px; /* Ajuste el padding para un mejor tamaño de clic */
+  border-radius: 50%; /* Forma redondeada */
+  color: #757575; /* Color gris suave por defecto */
+}
+
+mat-icon:hover {
+  color: #4CAF50; /* Color primario al pasar el mouse */
+  transform: scale(1.1);
+  background-color: rgba(76, 175, 80, 0.1); /* Fondo muy suave al pasar el mouse */
+}
+
+/* Estilos específicos para iconos de acción (ej. borrar) */
+mat-icon[fontIcon="delete"] {
+  color: #EF5350; /* Rojo para eliminar */
+}
+
+mat-icon[fontIcon="delete"]:hover {
+  color: #D32F2F; /* Rojo más oscuro */
+  background-color: rgba(239, 83, 80, 0.1); /* Fondo suave rojo */
+}
+
+/* -------------------------------------------------------------------------- */
+/* ESTILOS DE TABLA (COMO EN LA SUGERENCIA ANTERIOR)                         */
+/* -------------------------------------------------------------------------- */
+
+/* Estilos para el contenedor de la tabla y el campo de búsqueda */
+.table-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 40px auto; /* Ajuste el margen superior para separar del formulario */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12); /* Sombra consistente con el formulario */
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+/* Estilos para el campo de búsqueda de la tabla */
+.table-container mat-form-field { /* Especificidad para el mat-form-field de la tabla */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.mat-elevation-z8 {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: none; /* La sombra ya la tiene el .table-container */
+}
+
+th.mat-header-cell {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 600;
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+tr.mat-row {
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+tr.mat-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr.mat-row:hover {
+  background-color: #e8f5e9; /* Verde claro al pasar el ratón */
+  cursor: pointer;
+}
+
+td.mat-cell {
+  padding: 12px 20px;
+  color: #333;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+/* -------------------------------------------------------------------------- */
+/* MEDIA QUERIES PARA RESPONSIVE (Formulario y Tabla)                       */
+/* -------------------------------------------------------------------------- */
+
+/* Responsive para el Formulario */
+@media (max-width: 768px) {
+  .formulario-producto {
+    margin: 20px; /* Menos margen en los laterales para móviles */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra un poco más suave */
   }
-  
-  label {
-    padding-left: 30px;
-    padding-right: 50px;
+
+  .formulario-producto h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
   }
-  
+
   input[type="text"],
-  input[type="number"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-    transition: border-color 0.3s;
-    padding-left: 5px;
-    margin-top: 10px;
+  input[type="number"],
+  input[type="email"],
+  input[type="password"] {
+    font-size: 0.95rem;
+    padding: 10px;
   }
-  
-  input:focus {
-    border-color: #007BFF;
-    outline: none;
-  }
-  
+
   .botones {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    gap: 10px; /* Espacio entre botones */
-    margin-top: 20px; /* Espacio arriba si quieres */
+    flex-direction: column; /* Apila los botones verticalmente */
+    gap: 10px;
   }
-  
+
   .guardar-btn,
   .cancelar-btn {
-    padding: 10px 20px;
-    border: none;
+    width: 100%; /* Botones a ancho completo */
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive para la Tabla */
+@media (max-width: 768px) {
+  .table-container {
+    padding: 10px;
+    margin: 20px 10px; /* Ajuste el margen para que no se pegue */
+    border-radius: 8px;
+  }
+
+  .mat-elevation-z8 {
     border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  .demo-button{
-    background-color: #007BFF;
-    color: white;
   }
 
-  .mat-icon {
-    cursor: pointer;          /* Cambia el cursor a una mano */
-    transition: 0.3s;         /* Suaviza la animación */
-    padding: 8px;             /* Espacio interno */
-    border-radius: 50%;       /* Forma redondeada */
+  .mat-header-row {
+    display: none;
   }
-  
-  .mat-icon:hover {
-    color: #b62a2a; /* Cambia el fondo al pasar el mouse */
-    transform: scale(1.1);     /* Agranda un poco el icono */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-  }
-  
-  /*---------------tabla-------------*/
 
-  .mat-elevation-z8{
-    background-color:rgb(31, 29, 29);
-    margin-bottom: 25px;
+  tr.mat-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
-  /* Responsive */
-  @media (max-width: 600px) {
-    .formulario-producto {
-      padding: 20px;
-      margin: 20px;
-    }
-  
-    .formulario-producto h2 {
-      font-size: 1.3rem;
-    }
-  
-    input[type="text"],
-    input[type="number"] {
-      font-size: 15px;
-    }
+
+  td.mat-cell {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 0;
+    border-bottom: none;
+    font-size: 13px;
   }
+
+  td.mat-cell:before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #555;
+    margin-right: 10px;
+    min-width: 80px;
+  }
+
+  td.mat-cell:last-of-type {
+    justify-content: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+  }
+}
+
+/* Estilos adicionales para pantallas muy pequeñas (ej. iPhone SE) */
+@media (max-width: 480px) {
+  .table-container {
+    padding: 5px;
+    margin: 10px auto;
+  }
+
+  tr.mat-row {
+    padding: 10px;
+  }
+
+  td.mat-cell {
+    padding: 6px 0;
+  }
+}

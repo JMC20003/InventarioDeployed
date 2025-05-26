@@ -4,7 +4,7 @@
     <h2>{{ producto.nombre }}</h2>
     <p class="precio"><strong>Precio:</strong> {{ p.precio | currency:'USD' }}</p>
     <p><strong>Stock:</strong> {{ p.stock }}</p>
-    <p><strong>Categoría:</strong> {{ p.categoria }}</p>
+    <p><strong>Descripcion:</strong> {{ p.descripcion }}</p>
     <button mat-raised-button color="primary" routerLink="/carrito" (click)="guardarEnCarrito(producto)">Añadir al carrito</button>
   </div>
  

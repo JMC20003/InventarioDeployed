@@ -17,6 +17,7 @@ export class ProductoComponent implements OnInit{
     precio: 0,
     stock: 0,
     categoria: '',
+    descripcion:'',
     imagen: ''
   };
   dataSource !:Producto[];
@@ -57,6 +58,7 @@ export class ProductoComponent implements OnInit{
       precio: 0,
       stock: 0,
       categoria: '',
+      descripcion:'',
       imagen: ''
     };
   }
@@ -73,7 +75,9 @@ export class ProductoComponent implements OnInit{
       });
     }
   }
-
+ limiparFormulario(){
+  this.resetForm();
+ }
   applyFilter(event: Event) {
     let busqueda = (event.target as HTMLInputElement).value;
     this.dsLista.filter = busqueda.trim();

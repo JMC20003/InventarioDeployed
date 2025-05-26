@@ -7,7 +7,7 @@
   margin-bottom: 15px;
 }
 .contenido-card{
-    background-color: whitesmoke;
+    background-color: rgb(231, 0, 0);
     display: flex;
     justify-content: center; /* centra horizontalmente las cajas */
     gap: 20px; /* espacio entre los divs */
@@ -79,7 +79,9 @@ mat-card-content p {
     color: black;  }
 
 .demo-button:hover{
-    background-color:#34df53;
+    background-color: #43A047; /* Verde más oscuro al pasar el ratón */
+  transform: translateY(-2px); /* Pequeño levantamiento */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .nombreCategoria{
     color: black;

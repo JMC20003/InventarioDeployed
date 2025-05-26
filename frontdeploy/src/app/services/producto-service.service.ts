@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductoServiceService {
 
-  private baseUrl = 'https://proyecto5-e5bb9.web.app/api/productos';
+  private baseUrl = 'https://backendinventarioventas.onrender.com/api/productos';
 
   constructor(private clientHTTP: HttpClient ) { }
   getAllProducts(){
@@ -20,6 +20,6 @@ export class ProductoServiceService {
     return this.clientHTTP.delete(this.baseUrl +"/eliminar/"+ id.toString());
   }
   obtenerProductoPorId(id: number) {
-  return this.clientHTTP.get<Producto>(this.baseUrl + id.toString());
+  return this.clientHTTP.get<Producto>(this.baseUrl +"/" + id.toString());
   }
 }

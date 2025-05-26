@@ -28,7 +28,7 @@ interface JwtPayload {
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'https://proyecto5-e5bb9.web.app/auth';
+  private baseUrl = 'https://backendinventarioventas.onrender.com/auth';
 
   constructor(private http: HttpClient) { }
 

@@ -25,7 +25,7 @@ export class ProductoMenoresComponent {
 cargarProductosMenores(): void {
     this.servicioProducto.getAllProducts().subscribe({
       next: (productos: Producto[]) => {
-        // Filtramos solo los productos con categoría 'adultos' (case insensitive y trim)
+        // Filtramos solo los productos con categoría 'niños' (case insensitive y trim)
         this.productosNinos = productos.filter(p => 
           p.categoria?.toLowerCase().trim() === 'niños'
         );
