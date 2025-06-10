@@ -17,10 +17,19 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Categoría</mat-label>
-    <input id="categoria" matInput type="text" name="categoria" [(ngModel)]="producto.categoria" required>
-    <mat-icon matSuffix>category</mat-icon>
+    <mat-label>Talla</mat-label>
+    <input id="talla" matInput type="text" step="1" name="talla" [(ngModel)]="producto.talla" required>
+    <mat-icon matSuffix>talla</mat-icon>
   </mat-form-field>
+
+ <mat-form-field appearance="outline">
+  <mat-label>Categoría</mat-label>
+  <mat-select id="categoria" name="categoria" [(ngModel)]="producto.categoria" required>
+    <mat-option value="adultos">Adultos</mat-option>
+    <mat-option value="niños">Niños</mat-option>
+    </mat-select>
+  <mat-icon matSuffix>category</mat-icon>
+</mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Descripción</mat-label>

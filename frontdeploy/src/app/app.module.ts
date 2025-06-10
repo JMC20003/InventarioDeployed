@@ -20,6 +20,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { authInterceptor } from './auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { MatSelectModule } from '@angular/material/select'; // <-- Añade este
+import { MatOptionModule } from '@angular/material/core'; // <-- Y este
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { CarritoComponent } from './components/carrito/carrito.component';
     ProductoMenoresComponent,
     LoginComponent,
     RegisterComponent,
-    CarritoComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

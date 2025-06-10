@@ -5,5 +5,6 @@ export interface Producto{
     stock:number,
     categoria:string,
     descripcion:string,
-    imagen:string
+    imagen:string,
+    talla:string | string[];
 }

@@ -1,38 +1,78 @@
+// src/app/services/cart.service.ts
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+export interface CartItem {
+  id: string;
+  nombre: string;
+  precio: number;
+  imagen: string;
+  tallaSeleccionada: string;
+  cantidad: number;
+  stockTotal?: number; // Opcional, si quieres mantenerlo aquí
+  descripcion?: string;
+  tallas?: string[];
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  private cartKey = 'shopping_cart';
+  private cartItemsSubject = new BehaviorSubject<CartItem[]>(this.getCartFromLocalStorage());
+  cartItems$ = this.cartItemsSubject.asObservable();
 
-  private cartItems: any[] = [];
+  constructor() { }
 
-  constructor() {
-    this.loadCart();
+  private getCartFromLocalStorage(): CartItem[] {
+    const cart = localStorage.getItem(this.cartKey);
+    return cart ? JSON.parse(cart) : [];
   }
 
-  private loadCart() {
-    const data = localStorage.getItem('cart');
-    if (data) {
-      this.cartItems = JSON.parse(data);
+  private saveCartToLocalStorage(items: CartItem[]): void {
+    localStorage.setItem(this.cartKey, JSON.stringify(items));
+    this.cartItemsSubject.next(items); // Notifica a los suscriptores
+  }
+
+  addToCart(item: CartItem): void {
+    const currentItems = this.getCartFromLocalStorage();
+    const existingItemIndex = currentItems.findIndex(
+      cartItem => cartItem.id === item.id && cartItem.tallaSeleccionada === item.tallaSeleccionada
+    );
+
+    if (existingItemIndex > -1) {
+      currentItems[existingItemIndex].cantidad += item.cantidad;
+    } else {
+      currentItems.push(item);
+    }
+    this.saveCartToLocalStorage(currentItems);
+  }
+
+  // **NUEVO MÉTODO: Actualizar cantidad de un item**
+  updateItemQuantity(itemId: string, talla: string, newQuantity: number): void {
+    const currentItems = this.getCartFromLocalStorage();
+    const itemToUpdateIndex = currentItems.findIndex(
+      cartItem => cartItem.id === itemId && cartItem.tallaSeleccionada === talla
+    );
+
+    if (itemToUpdateIndex > -1) {
+      currentItems[itemToUpdateIndex].cantidad = newQuantity;
+      this.saveCartToLocalStorage(currentItems);
     }
   }
 
-  private saveCart() {
-    localStorage.setItem('cart', JSON.stringify(this.cartItems));
+  getCartItems(): CartItem[] {
+    return this.getCartFromLocalStorage();
   }
 
-  getItems() {
-    return this.cartItems;
+  clearCart(): void {
+    this.saveCartToLocalStorage([]);
   }
 
-  addToCart(product: any) {
-    this.cartItems.push(product);
-    this.saveCart();
-  }
-
-  clearCart() {
-    this.cartItems = [];
-    this.saveCart();
+  // Modificación en removeItemFromCart para usar talla
+  removeItemFromCart(itemId: string, talla: string): void {
+    let currentItems = this.getCartFromLocalStorage();
+    currentItems = currentItems.filter(item => !(item.id === itemId && item.tallaSeleccionada === talla));
+    this.saveCartToLocalStorage(currentItems);
   }
 }

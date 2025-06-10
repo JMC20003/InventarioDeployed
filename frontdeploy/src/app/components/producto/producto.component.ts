@@ -16,9 +16,10 @@ export class ProductoComponent implements OnInit{
     nombre: '',
     precio: 0,
     stock: 0,
+    talla:'',
     categoria: '',
     descripcion:'',
-    imagen: ''
+    imagen: '',
   };
   dataSource !:Producto[];
 
@@ -57,6 +58,7 @@ export class ProductoComponent implements OnInit{
       nombre: '',
       precio: 0,
       stock: 0,
+      talla:'',
       categoria: '',
       descripcion:'',
       imagen: ''

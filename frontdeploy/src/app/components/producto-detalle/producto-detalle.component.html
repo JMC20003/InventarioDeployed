@@ -2,10 +2,33 @@
   <img class="detalle-imagen" [src]="p.imagen" alt="{{ p.nombre }}" >
   <div class="detalle-info">
     <h2>{{ producto.nombre }}</h2>
-    <p class="precio"><strong>Precio:</strong> {{ p.precio | currency:'USD' }}</p>
-    <p><strong>Stock:</strong> {{ p.stock }}</p>
-    <p><strong>Descripcion:</strong> {{ p.descripcion }}</p>
-    <button mat-raised-button color="primary" routerLink="/carrito" (click)="guardarEnCarrito(producto)">Añadir al carrito</button>
+    <p class="precio"><strong>{{ p.precio | currency:'USD' }}</strong> </p>
+    <p><strong>Stock:</strong> {{ p.stockTotal}}</p>
+     <div>
+      <div class="tallas-container">
+        <button
+          *ngFor="let talla of p.tallas"
+          class="talla-boton"
+          [class.seleccionada]="talla === tallaSeleccionada"
+          (click)="seleccionarTalla(talla)"
+          [disabled]="!isTallaDisponible(talla)"
+          mat-stroked-button
+        >
+          {{ talla }}
+        </button>
+      </div>
+    </div>
+    <p><strong>Descripcion: <br>
+    </strong> {{ p.descripcion }}</p>
+    <button
+      mat-raised-button
+      color="primary"
+      routerLink="/carrito"
+      (click)="guardarEnCarrito(producto)"
+      [disabled]="!tallaSeleccionada"
+    >
+      Añadir al carrito
+    </button>
   </div>
  
 </div>

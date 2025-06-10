@@ -1,44 +1,60 @@
-<!-- carrito.component.html -->
 <div class="container">
-    <div class="container-carrito">
+  <div class="container-carrito">
     <h1 class="titulo">Carrito de Compras</h1>
 
-    <div class="cards">
-        <mat-card *ngFor="let producto of productosCarrito" class="producto-card">
+    <div class="cards" *ngIf="productosCarrito && productosCarrito.length > 0; else carritoVacio">
+      <mat-card *ngFor="let producto of productosCarrito" class="producto-card">
         <div class="contenido-card">
-            <div class="imagenCard">
-                <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}" class="imagen-producto">
-            </div>
-            
+          <div class="imagenCard">
+            <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}" class="imagen-producto">
+          </div>
 
-            <div class="info-producto">
+          <div class="info-producto">
             <mat-card-header class="nombreCategoria">
-                <mat-card-title class="nombreCategoria" >{{ producto.nombre }}</mat-card-title>
-                <mat-card-subtitle class="nombreCategoria" >Categoría: {{ producto.categoria }}</mat-card-subtitle>
+              <mat-card-title class="nombreCategoria">{{ producto.nombre }}</mat-card-title>
             </mat-card-header>
 
             <mat-card-content>
-                <p><strong>Cantidad:</strong> 1 </p>
-                <p><strong>Precio:</strong> {{ producto.precio }}</p>
-                <p><strong>Descripcion:</strong> {{ producto.cantidad }}</p>
+              <p><strong>Cantidad:</strong> {{ producto.cantidad }} </p>
+              <p><strong>Talla:</strong> {{ producto.tallaSeleccionada }}</p>
+              <p><strong>Precio unitario:</strong> {{ producto.precio | currency:'USD' }}</p>
             </mat-card-content>
 
             <mat-card-actions class="acciones-card">
-                <button  class="delete-button" mat-raised-button  (click)="eliminarDelCarrito(producto.id)">
+              <button mat-icon-button color="primary" (click)="cambiarCantidad(producto, -1)">
+                <mat-icon>remove_circle</mat-icon>
+              </button>
+              <button mat-icon-button color="primary" (click)="cambiarCantidad(producto, 1)">
+                <mat-icon>add_circle</mat-icon>
+              </button>
+
+              <button class="delete-button" mat-raised-button color="warn" (click)="eliminarDelCarrito(producto.id, producto.tallaSeleccionada)">
                 Eliminar
-                </button>
+              </button>
             </mat-card-actions>
-            </div>
+          </div>
         </div>
-        </mat-card>
+      </mat-card>
     </div>
 
-    <div class="boton-comprar">
-        <button class="demo-button" mat-raised-button  (click)="comprarPorWhatsapp()">
+    <ng-template #carritoVacio>
+      <div class="carrito-vacio-mensaje">
+        <p>Tu carrito está vacío. ¡Añade algunos productos!</p>
+        <button mat-raised-button color="primary" routerLink="/">Volver a la tienda</button>
+      </div>
+    </ng-template>
+
+    <div class="resumen-pedido" *ngIf="productosCarrito && productosCarrito.length > 0">
+        <h2>Resumen del Pedido</h2>
+        <p>Total de productos: {{ totalItems }}</p>
+        <p>Total a pagar: {{ subtotal | currency:'USD' }}</p>
+    </div>
+
+
+    <div class="boton-comprar" *ngIf="productosCarrito && productosCarrito.length > 0">
+      <button class="demo-button" mat-raised-button (click)="comprarPorWhatsapp()">
         Comprar por WhatsApp
-        </button>
+      </button>
     </div>
-    </div>
+  </div>
 </div>
-
-

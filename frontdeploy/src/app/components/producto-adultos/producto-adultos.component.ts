@@ -22,17 +22,41 @@ export class ProductoAdultosComponent {
     
   }
   cargarProductosAdultos(): void {
-    this.servicioProducto.getAllProducts().subscribe({
-      next: (productos: Producto[]) => {
-        // Filtramos solo los productos con categoría 'adultos' (case insensitive y trim)
-        this.productosAdultos = productos.filter(p => 
-          p.categoria?.toLowerCase().trim() === 'adultos'
-        );
-      },
-      error: (err) => {
-        console.error('Error cargando productos:', err);
-      }
-    });
+  this.servicioProducto.getAllProducts().subscribe({
+    next: (productos: Producto[]) => {
+      // Filtramos por categoría adultos
+      const filtrados = productos.filter(p =>
+        p.categoria?.toLowerCase().trim() === 'adultos'
+      );
+
+      // Agrupar por nombre de producto
+      const agrupados: { [nombre: string]: Producto } = {};
+
+      filtrados.forEach(producto => {
+        const nombre = producto.nombre.trim();
+
+        if (!agrupados[nombre]) {
+          // Clonar el producto y empezar a juntar tallas
+          agrupados[nombre] = { ...producto, talla: [producto.talla as string] };
+        } else {
+          // Si ya existe, agregar talla al array (si no está repetida)
+          const tallas = agrupados[nombre].talla as string[];
+          if (!tallas.includes(producto.talla as string)) {
+            tallas.push(producto.talla as string);
+          }
+        }
+      });
+
+      // Convertimos el objeto agrupado en array
+      this.productosAdultos = Object.values(agrupados);
+    },
+    error: (err) => {
+      console.error('Error cargando productos:', err);
+    }
+  });
+}
+  getTallasString(talla: string | string[]): string {
+    return Array.isArray(talla) ? talla.join(', ') : talla;
   }
 
 }

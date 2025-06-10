@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select'; // <-- Añade este
+import { MatOptionModule } from '@angular/material/core'; // <-- Y este
 
 @NgModule({
   declarations: [],
@@ -30,7 +32,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     BrowserAnimationsModule,
     MatTableModule,
     MatMenuModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   exports:[
     MatButtonModule,
@@ -45,7 +49,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     BrowserAnimationsModule,
     MatTableModule,
     MatMenuModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule,
+    MatOptionModule
   ]
 })
 export class MaterialModule { }

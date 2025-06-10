@@ -1,14 +1,25 @@
-<h2>Productos Adultos</h2>
-<div *ngIf="productosAdultos.length === 0">
-  No hay productos para adultos disponibles.
+<div class="productos-adultos-section">
+  <h2 class="section-title">Productos de Adultos</h2>
+
+  <div *ngIf="productosAdultos.length === 0" class="no-productos-message">
+    <p>No hay productos para adultos disponibles en este momento.</p>
+    <p>¡Vuelve pronto!</p>
+  </div>
+
+  <div class="productos-container" *ngIf="productosAdultos.length > 0">
+    <mat-card
+      class="producto-card"
+      *ngFor="let producto of productosAdultos"
+      [routerLink]="['/producto-detalle', producto.id]"
+    >
+      <div class="imagen-wrapper">
+        <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}" class="producto-imagen">
+      </div>
+      
+      <mat-card-content class="card-content-area">
+        <h3 class="producto-nombre">{{ producto.nombre }}</h3>
+        <p class="producto-precio">{{ producto.precio | currency:'USD' }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
-<div class="productos-container" *ngIf="productosAdultos.length > 0">
-  <mat-card class="producto-card" *ngFor="let producto of productosAdultos" [routerLink]="['/producto-detalle', producto.id]">
-    <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}">
-    <mat-card-content>
-      <h2>{{ producto.nombre }} </h2>
-      <h3 class="precio">{{ producto.precio | currency:'USD' }}</h3>
-      <h3> Stock: {{ producto.stock }}</h3>
-      <p>{{producto.descripcion}} </p>
-    </mat-card-content>
-  </mat-card>
