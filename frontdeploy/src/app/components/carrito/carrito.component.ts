@@ -67,7 +67,7 @@ export class CarritoComponent implements OnInit, OnDestroy {
     // Codificar el mensaje para la URL
     const mensajeCodificado = encodeURIComponent(mensaje);
     // Número de WhatsApp (ejemplo, reemplaza con tu número real)
-    const numeroWhatsapp = "51987654321"; // Reemplaza con tu número de WhatsApp real (incluyendo el código de país sin el +)
+    const numeroWhatsapp = "5491170266475"; // Reemplaza con tu número de WhatsApp real (incluyendo el código de país sin el +)
 
     const url = `https://wa.me/${numeroWhatsapp}?text=${mensajeCodificado}`;
     window.open(url, '_blank'); // Abre en una nueva pestaña

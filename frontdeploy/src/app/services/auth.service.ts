@@ -28,8 +28,8 @@ interface JwtPayload {
   providedIn: 'root'
 })
 export class AuthService {
-  //private baseUrl = 'https://backendinventarioventas.onrender.com/auth';
-  private baseUrl = 'http://localhost:8080/auth';
+  private baseUrl = 'https://backendinventarioventas.onrender.com/auth';
+  //private baseUrl = 'http://localhost:8080/auth';
   constructor(private http: HttpClient) { }
 
   login(data: AuthRequest): Observable<any> {

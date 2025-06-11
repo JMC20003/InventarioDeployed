@@ -55,8 +55,9 @@ export class ProductoAdultosComponent {
     }
   });
 }
-  getTallasString(talla: string | string[]): string {
-    return Array.isArray(talla) ? talla.join(', ') : talla;
-  }
+
+  //getTallasString(talla: string | string[]): string {
+    //return Array.isArray(talla) ? talla.join(', ') : talla;
+  //}
 
 }

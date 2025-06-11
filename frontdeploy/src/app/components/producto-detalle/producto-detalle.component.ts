@@ -43,11 +43,9 @@ export class ProductoDetalleComponent {
     // return this.producto?.stockPorTalla[talla] > 0;
     return true; // Por ahora, asumimos que todas las tallas listadas están disponibles
   }
-   // Método para guardar el producto en el carrito
+   
   guardarEnCarrito(producto: Productodto): void {
     if (this.tallaSeleccionada) {
-      // Creamos una copia del producto para añadir la talla seleccionada
-      // y la cantidad (por defecto 1, puedes ajustarla).
       const itemParaCarrito = {
         ...producto,
         tallaSeleccionada: this.tallaSeleccionada,

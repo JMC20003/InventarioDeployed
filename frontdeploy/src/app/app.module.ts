@@ -20,8 +20,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { authInterceptor } from './auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CarritoComponent } from './components/carrito/carrito.component';
-import { MatSelectModule } from '@angular/material/select'; // <-- Añade este
-import { MatOptionModule } from '@angular/material/core'; // <-- Y este
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // <-- Asegúrate de tenerlo
 
 @NgModule({
   declarations: [
@@ -44,7 +44,9 @@ import { MatOptionModule } from '@angular/material/core'; // <-- Y este
     MaterialModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxFileDropModule,
+    BrowserAnimationsModule
   ],
   providers: [
     provideClientHydration(withEventReplay()),

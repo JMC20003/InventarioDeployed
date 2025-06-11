@@ -8,9 +8,8 @@ import { Productodto } from '../models/productodto';
 })
 export class ProductoServiceService {
 
-  //private baseUrl = 'https://backendinventarioventas.onrender.com/api/productos';
-
-  private baseUrl = 'http://localhost:8080/api/productos';
+  private baseUrl = 'https://backendinventarioventas.onrender.com/api/productos';
+  //private baseUrl = 'http://localhost:8080/api/productos';
   constructor(private clientHTTP: HttpClient ) { }
   getAllProducts(){
     return this.clientHTTP.get<Producto[]>(this.baseUrl + "/listar")
