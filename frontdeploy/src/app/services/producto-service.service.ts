@@ -8,7 +8,7 @@ import { Productodto } from '../models/productodto';
 })
 export class ProductoServiceService {
 
-  private baseUrl = 'https://backendinventarioventas.onrender.com/api/productos';
+  private baseUrl = 'https://api.tiendarjsc.site/api/productos';
   //private baseUrl = 'http://localhost:8080/api/productos';
   constructor(private clientHTTP: HttpClient ) { }
   getAllProducts(){
@@ -21,7 +21,7 @@ export class ProductoServiceService {
     return this.clientHTTP.get<Producto[]>(this.baseUrl + "/cards" )
   }
   deleteProduct(id: number) {
-    return this.clientHTTP.delete(this.baseUrl +"/eliminar/"+ id.toString());
+    return this.clientHTTP.put(this.baseUrl +"/eliminar/"+ id.toString(),null);
   }
   obtenerProductoPorId(id: number) {
   return this.clientHTTP.get<Productodto>(this.baseUrl +"/" + id.toString());

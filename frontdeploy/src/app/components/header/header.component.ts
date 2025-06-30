@@ -12,7 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class HeaderComponent {
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
-  constructor(private dialog: MatDialog, private authService:AuthService) {}
+  constructor(private dialog: MatDialog, public authService:AuthService) {}
 
   abrirFormularioContacto() {
     this.dialog.open(ContactoComponent, {
@@ -23,5 +23,7 @@ export class HeaderComponent {
     isAdmin(): boolean {
     return this.authService.hasRole('ROLE_ADMIN');
   }
-
+  cerrarSesion(){
+    this.authService.cerrarSesion();
+  }
 }
