@@ -4,75 +4,129 @@
   color: #000000;
 }
 
-/* Sección de Héroe */
+/* hero-section.css */
+
 .hero-section {
-  position: relative; /* Esencial para posicionar la imagen y el contenido */
-  width: 100%;
-  height: 70vh; /* Mayor altura para que la imagen se vea bien */
-  overflow: hidden;
-  display: flex; /* Para controlar la alineación del contenido */
-  align-items: center; /* Alinea verticalmente el contenido */
-  justify-content: flex-start; /* Alinea el contenido a la izquierda */
-  padding: 0 5%; /* Padding lateral para que el contenido no pegue al borde */
-  box-sizing: border-box; /* Incluye padding en el ancho/alto */
-  background-color: #f0f0f0; /* Color de fondo por si la imagen tarda en cargar */
+    width: 100%;
+    /* Aumentamos la altura mínima para acomodar el diseño vertical más alto */
+    min-height: 850px; /* Ajustado: antes 450px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-image: linear-gradient(to right, #1a1a1a, #4a0000); 
+    box-sizing: border-box;
 }
 
-/* Imagen de fondo de la sección de Héroe */
-.hero-background-image {
-  position: absolute; /* Permite que la imagen cubra todo el contenedor */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Cubre todo el espacio, recortando si es necesario */
-  object-position: center; /* Centra la imagen */
-  z-index: 1; /* Asegura que la imagen esté debajo del texto */
-  /* Puedes añadir un filtro de opacidad o brillo si la imagen es muy clara */
-  /* filter: brightness(0.8); */ /* Ejemplo: Oscurece un poco la imagen */
+.galeria-fila {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
 }
 
-/* Contenido de texto y botón */
-.hero-content {
-  position: relative; /* Asegura que el contenido esté por encima de la imagen */
-  z-index: 2; /* Siempre encima de la imagen de fondo */
-  max-width: 600px; /* Limita el ancho del texto para legibilidad */
-  text-align: left; /* Alinea el texto a la izquierda */
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente para el texto */
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+/* Estilo para todas las imágenes en la galería */
+.imagen-galeria {
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.hero-content h1 {
-  font-size: 3em; /* Título principal */
-  margin-bottom: 10px;
-  font-weight: 700;
-  color: #000000; /* Color negro para el texto */
-  /* Removemos text-shadow ya que ahora el fondo del texto es claro */
+.imagen-galeria:hover {
+    transform: scale(1.01);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
-.hero-content p {
-  font-size: 1.2em;
-  margin-bottom: 25px;
-  color: #000000; /* Color gris oscuro para el párrafo */
-  line-height: 1.5;
-  /* Removemos text-shadow */
+/* IMAGEN PRINCIPAL (GRANDE) */
+.imagen-principal {
+    flex: 1;
+    width: 50%;
+    /* ¡NUEVO! Altura fija y más pronunciada para un aspecto vertical más grande */
+    height: 815px; /* Ajustado: antes 400px */
+    max-height: 80vh; /* Para evitar que sea excesivamente alta en pantallas muy grandes */
+    min-width: 250px;
 }
 
-.hero-content button {
-  padding: 12px 30px;
-  font-size: 1.1em;
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  background-color: #3f51b5; /* Usamos el color primary de Angular Material */
-  color: white;
+/* CONTENEDOR DE IMÁGENES LATERALES */
+.imagenes-laterales {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.hero-content button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+/* IMÁGENES PEQUEÑAS LATERALES */
+.imagen-pequena {
+    width: 100%;
+    /* ¡NUEVO! Altura calculada para que 2 + gap = altura de la grande */
+    /* (500px - 15px de gap) / 2 = 242.5px */
+    height: 400px; /* Ajustado: antes 192.5px */
+    max-height: 38vh; /* Controla la altura máxima para que no sean enormes */
+    min-width: 120px;
+}
+
+/* --- Media Queries para Responsividad --- */
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 400px; /* Ajustado */
+        padding: 15px;
+    }
+
+    .galeria-fila {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .imagen-principal {
+        width: 80%;
+        height: 350px; /* Ajustado */
+        min-width: unset;
+    }
+
+    .imagenes-laterales {
+        width: 80%;
+        height: auto;
+        gap: 10px;
+    }
+
+    .imagen-pequena {
+        height: 170px; /* Ajustado: (350px - 10px) / 2 = 170px */
+        min-width: unset;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        min-height: 300px; /* Ajustado */
+        padding: 10px;
+    }
+
+    .galeria-fila {
+        gap: 15px;
+    }
+
+    .imagen-principal {
+        width: 90%;
+        height: 280px; /* Ajustado */
+    }
+
+    .imagenes-laterales {
+        width: 90%;
+        gap: 8px;
+    }
+
+    .imagen-pequena {
+        height: 136px; /* Ajustado: (280px - 8px) / 2 = 136px */
+    }
 }
 
 /* --- Resto de los estilos (mantén los de las secciones de productos, filtros, etc.) --- */
@@ -81,7 +135,7 @@
   text-align: center;
   font-size: 2.8em;
   margin: 60px 0 30px;
-  color: #2c3e50;
+  color: #000000;
   font-weight: 600;
 }
 
@@ -161,7 +215,7 @@
 }
 
 .product-price {
-  font-size: 1.6em;
+  font-size: 1.5em;
   font-weight: 700;
   color: #e91e63;
   margin-top: 0;
@@ -269,9 +323,6 @@
 
 /* Tablet (mínimo 600px de ancho) */
 @media (min-width: 600px) {
-  .hero-section {
-    height: 80vh; /* Más altura en tablet */
-  }
   .hero-content {
       max-width: 500px; /* Ajusta el ancho del texto */
       padding: 35px;
@@ -292,9 +343,6 @@
 
 /* Desktop (mínimo 900px de ancho) */
 @media (min-width: 900px) {
-  .hero-section {
-    height: 90vh; /* Altura de héroe más grande en desktop */
-  }
   .hero-content {
       max-width: 600px; /* Ajusta el ancho del texto */
       padding: 40px;

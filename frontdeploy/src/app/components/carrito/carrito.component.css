@@ -15,7 +15,7 @@
 .titulo {
   text-align: center;
   margin-bottom: 30px;
-  color: #333;
+  color: #000000;
   font-size: 2.5em;
   font-weight: 600;
 }
@@ -65,14 +65,11 @@
   flex-direction: column;
 }
 
-.nombreCategoria {
-  margin-bottom: 10px;
-}
 
 .nombreCategoria mat-card-title {
   font-size: 1.4em;
   font-weight: 500;
-  color: #3f51b5; /* Color primario de Material Design */
+  color: #000000; /* Color primario de Material Design */
 }
 
 mat-card-content p {
@@ -99,6 +96,10 @@ mat-card-actions {
   margin-left: auto; /* Empuja el botón eliminar a la derecha */
 }
 
+.selectOption:hover{
+  cursor: pointer;
+  color:rgb(0, 0, 0)
+}
 /* Resumen del pedido */
 .resumen-pedido {
     background-color: #f9f9f9;
@@ -112,7 +113,7 @@ mat-card-actions {
 
 .resumen-pedido h2 {
     font-size: 1.8em;
-    color: #333;
+    color: #000000;
     margin-bottom: 15px;
 }
 

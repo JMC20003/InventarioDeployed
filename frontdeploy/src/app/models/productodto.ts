@@ -1,9 +1,11 @@
+import { TallaStockDTO } from "./TallaStockDTO";
+
 export interface Productodto{
-    id:string;
-    nombre: string;
-    descripcion: string;
-    imagen: string;
-    precio: number;
-    tallas: string[];
-    stockTotal: number;
+  id: number;
+  nombre: string;
+  precio: number;
+  descripcion: string;
+  imagen: string;
+  categoria: string;
+  tallas: TallaStockDTO[];
 }

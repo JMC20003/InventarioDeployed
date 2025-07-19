@@ -1,27 +1,35 @@
 <div class="detalle-container" *ngIf="producto as p; else cargando">
-  <img class="detalle-imagen" [src]="p.imagen" alt="{{ p.nombre }}" >
+  <img class="detalle-imagen" [src]="p.imagen" alt="{{ p.nombre }}" />
   <div class="detalle-info">
-    <h2>{{ producto.nombre }}</h2>
-    <p class="precio"><strong>{{ p.precio | currency:'USD' }}</strong> </p>
-    <p><strong>Stock:</strong> {{ p.stockTotal}}</p>
-     <div>
+    <h3>{{ producto.nombre }}</h3>
+    <p class="precio">
+      {{ p.precio | currency : "USD" }}
+    </p>
+    <p>
+      Descripcion: {{ p.descripcion }}
+    </p>
+    <div *ngIf="tallaSeleccionada" class="stock-info">
+      <p>
+       Stock disponible:
+        {{ obtenerStockDeTallaSeleccionada() }}
+      </p>
+    </div>
+    <div>
       <div class="tallas-container">
         <button
+          mat-flat-button
           *ngFor="let talla of p.tallas"
           class="talla-boton"
-          [class.seleccionada]="talla === tallaSeleccionada"
-          (click)="seleccionarTalla(talla)"
-          [disabled]="!isTallaDisponible(talla)"
-          mat-stroked-button
+          [class.seleccionada]="talla.talla === tallaSeleccionada"
+          (click)="seleccionarTalla(talla.talla)"
+          [disabled]="!isTallaDisponible(talla.talla)"
         >
-          {{ talla }}
+          {{ talla.talla }}
         </button>
       </div>
     </div>
-    <p><strong>Descripcion: <br>
-    </strong> {{ p.descripcion }}</p>
     <button
-      mat-raised-button
+      mat-flat-button
       color="primary"
       routerLink="/carrito"
       (click)="guardarEnCarrito(producto)"
@@ -30,7 +38,6 @@
       Añadir al carrito
     </button>
   </div>
- 
 </div>
 
 <ng-template #cargando>

@@ -15,15 +15,16 @@
             </mat-card-header>
 
             <mat-card-content>
-              <p><strong>Cantidad:</strong> {{ producto.cantidad }} </p>
-              <p><strong>Talla:</strong> {{ producto.tallaSeleccionada }}</p>
-              <p><strong>Precio unitario:</strong> {{ producto.precio | currency:'USD' }}</p>
+              <p>Talla: {{ producto.tallaSeleccionada }}</p>
+              <p>Precio unitario: {{ producto.precio | currency:'USD' }}</p>
+              <p class="selectOption" routerLink="/inicio">Seleccionar otros productos </p>
             </mat-card-content>
 
             <mat-card-actions class="acciones-card">
               <button mat-icon-button color="primary" (click)="cambiarCantidad(producto, -1)">
                 <mat-icon>remove_circle</mat-icon>
               </button>
+              <p>{{ producto.cantidad }}</p>
               <button mat-icon-button color="primary" (click)="cambiarCantidad(producto, 1)">
                 <mat-icon>add_circle</mat-icon>
               </button>
@@ -40,7 +41,7 @@
     <ng-template #carritoVacio>
       <div class="carrito-vacio-mensaje">
         <p>Tu carrito está vacío. ¡Añade algunos productos!</p>
-        <button mat-raised-button color="primary" routerLink="/">Volver a la tienda</button>
+        <button mat-flat-button color="primary" routerLink="/">Volver a la tienda</button>
       </div>
     </ng-template>
 

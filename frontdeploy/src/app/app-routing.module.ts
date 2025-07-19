@@ -16,8 +16,7 @@ import { RenderMode} from '@angular/ssr';
 const routes: Routes = [
   { path:"",component:InicioComponent},
   { path:"inicio",component:InicioComponent},
-  { path: "producto-detalle/:id", component: ProductoDetalleComponent, data: { renderMode: RenderMode.Client }},
-  { path:"producto",component:ProductoComponent, canActivate: [adminGuard]},
+  { path:"producto-detalle/:id", component: ProductoDetalleComponent, data: { renderMode: RenderMode.Client }},
   {path:"categorias/adultos", component:ProductoAdultosComponent},
   {path:"categorias/ninos", component:ProductoMenoresComponent},
   {path:"login", component:LoginComponent},

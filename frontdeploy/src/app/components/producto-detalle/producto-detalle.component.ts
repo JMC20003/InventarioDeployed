@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from 'express';
 import { Producto } from '../../models/producto';
 import { ProductoServiceService } from '../../services/producto-service.service';
-import { CartService } from '../../services/cart.service';
+import { CartItem, CartService } from '../../services/cart.service';
 import { Productodto } from '../../models/productodto';
 
 @Component({
@@ -13,50 +13,68 @@ import { Productodto } from '../../models/productodto';
   styleUrl: './producto-detalle.component.css'
 })
 export class ProductoDetalleComponent {
-  producto!: Productodto;
-  id:number=0;
-  tallaSeleccionada: string | null = null; // Para almacenar la talla seleccionada
-
-  constructor(private route: ActivatedRoute, private productoService: ProductoServiceService, private cartService:CartService){}
-  ngOnInit(): void {
-      const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.productoService.obtenerProductoPorId(+id).subscribe((data) => {
-        this.producto = data;
-      });
-    }  
-  }
   
-  seleccionarTalla(talla: string): void {
-    this.tallaSeleccionada = talla;
-    console.log('Talla seleccionada:', this.tallaSeleccionada);
-    // Aquí podrías añadir lógica adicional si es necesario, como verificar stock por talla
-  }
+  producto!: Productodto;
+  tallaSeleccionada: string | null = null;
 
-  isTallaDisponible(talla: string): boolean {
-    // Implementa tu lógica para verificar si la talla está disponible.
-    // Esto podría implicar verificar el stock para esa talla específica
-    // Si tu `stockTotal` ya considera las tallas individuales, esta función
-    // podría ser más simple o incluso innecesaria si todas las tallas listadas
-    // en `p.tallas` siempre tienen stock.
-    // Por ejemplo, si tienes un mapa de stock por talla:
-    // return this.producto?.stockPorTalla[talla] > 0;
-    return true; // Por ahora, asumimos que todas las tallas listadas están disponibles
-  }
-   
-  guardarEnCarrito(producto: Productodto): void {
-    if (this.tallaSeleccionada) {
-      const itemParaCarrito = {
-        ...producto,
-        tallaSeleccionada: this.tallaSeleccionada,
-        cantidad: 1 // Puedes añadir un selector de cantidad si lo necesitas
-      };
-      this.cartService.addToCart(itemParaCarrito);
-      alert(`Producto "${producto.nombre}" (Talla: ${this.tallaSeleccionada}) agregado al carrito.`);
-      // Opcional: Podrías resetear la talla seleccionada después de añadir al carrito
-      // this.tallaSeleccionada = null;
-    } else {
-      alert('Por favor, selecciona una talla antes de añadir al carrito.');
+  constructor(
+    private route: ActivatedRoute,
+    private productoService: ProductoServiceService,
+    private cartService: CartService
+  ) {}
+
+  ngOnInit(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (!isNaN(id)) {
+      this.productoService.obtenerProductoPorId(id).subscribe({
+        next: (producto) => {
+          this.producto = producto;
+        },
+        error: (error) => {
+          console.error('Error al obtener el producto', error);
+        }
+      });
     }
   }
+
+  seleccionarTalla(talla: string): void {
+  if (this.tallaSeleccionada === talla) {
+    // Si ya está seleccionada, deselecciona
+    this.tallaSeleccionada = null;
+  } else {
+    // Si no, selecciona
+    this.tallaSeleccionada = talla;
+  }
+}
+
+  isTallaDisponible(talla: string): boolean {
+    const tallaObj = this.producto.tallas.find(t => t.talla === talla);
+    return tallaObj ? tallaObj.stock > 0 : false;
+  }
+
+  guardarEnCarrito(producto: Productodto): void {
+  if (!this.tallaSeleccionada) return;
+
+  const item: CartItem = {
+    id: producto.id.toString(),
+    nombre: producto.nombre,
+    precio: producto.precio,
+    imagen: producto.imagen,
+    descripcion: producto.descripcion,
+    cantidad: 1,
+    tallaSeleccionada: this.tallaSeleccionada,
+    tallas: producto.tallas,
+  };
+
+  this.cartService.addToCart(item);
+  alert('Producto añadido al carrito');
+}
+
+  obtenerStockDeTallaSeleccionada(): number {
+  if (!this.tallaSeleccionada) return 0;
+
+  const tallaObj = this.producto.tallas.find(t => t.talla === this.tallaSeleccionada);
+  return tallaObj ? tallaObj.stock : 0;
+  }
+
 }

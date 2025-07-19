@@ -10,7 +10,6 @@
         <a mat-list-item routerLink="/categorias/ninos" (click)="sidenav.close()">Niños</a>
       </mat-expansion-panel>
       <a mat-list-item routerLink="/contacto" (click)="abrirFormularioContacto(); sidenav.close()">Contáctanos</a>
-      <a  mat-list-item routerLink="/producto" (click)="sidenav.close()" *ngIf="isAdmin()">Registrar Producto</a>
       <a mat-list-item routerLink="/carrito" (click)="sidenav.close()">🛒 Ver carrito</a>
       <a  mat-list-item routerLink="/login" (click)="sidenav.close()" *ngIf="!authService.estaAutenticado()">Inicia Sesion</a>
       <a  mat-list-item (click)="sidenav.close()" (click)="cerrarSesion()" *ngIf="authService.estaAutenticado()">Cerrar Sesion</a>
@@ -31,7 +30,6 @@
       <nav class="nav-links">
         <button mat-button [matMenuTriggerFor]="menuCategorias">Categorías</button>
         <a mat-button (click)="abrirFormularioContacto(); sidenav.close()" routerLink="/contacto">Contáctanos</a>
-        <a mat-button routerLink="/producto" *ngIf="isAdmin()">Registrar Producto</a>
         <a mat-button routerLink="/carrito">🛒 Ver carrito</a>
         <a mat-button routerLink="/login" *ngIf="!authService.estaAutenticado()">Inicia Sesion</a>
         <a mat-button (click)="cerrarSesion()" *ngIf="authService.estaAutenticado()">Cerrar Sesion</a>

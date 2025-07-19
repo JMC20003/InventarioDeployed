@@ -8,20 +8,11 @@ import { Productodto } from '../models/productodto';
 })
 export class ProductoServiceService {
 
-  private baseUrl = 'https://api.tiendarjsc.site/api/productos';
+ private baseUrl = 'https://api.tiendarjsc.site/api/productos';
   //private baseUrl = 'http://localhost:8080/api/productos';
   constructor(private clientHTTP: HttpClient ) { }
-  getAllProducts(){
-    return this.clientHTTP.get<Producto[]>(this.baseUrl + "/listar")
-  }
-  postProduct(producto: Producto){
-    return this.clientHTTP.post<Producto>(this.baseUrl +"/registrar",producto)
-  }
-  getCard(){
-    return this.clientHTTP.get<Producto[]>(this.baseUrl + "/cards" )
-  }
-  deleteProduct(id: number) {
-    return this.clientHTTP.put(this.baseUrl +"/eliminar/"+ id.toString(),null);
+  obtenerTodosLosProductos(){
+    return this.clientHTTP.get<Productodto[]>(this.baseUrl + "/listar")
   }
   obtenerProductoPorId(id: number) {
   return this.clientHTTP.get<Productodto>(this.baseUrl +"/" + id.toString());

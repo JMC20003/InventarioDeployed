@@ -1,6 +1,7 @@
 // src/app/services/cart.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { TallaStockDTO } from '../models/TallaStockDTO';
 
 export interface CartItem {
   id: string;
@@ -9,16 +10,15 @@ export interface CartItem {
   imagen: string;
   tallaSeleccionada: string;
   cantidad: number;
-  stockTotal?: number; // Opcional, si quieres mantenerlo aquí
   descripcion?: string;
-  tallas?: string[];
+  tallas?: TallaStockDTO[];
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private cartKey = 'shopping_cart';
+  private cartKey = 'carrito';
   private cartItemsSubject = new BehaviorSubject<CartItem[]>(this.getCartFromLocalStorage());
   cartItems$ = this.cartItemsSubject.asObservable();
 
