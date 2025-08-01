@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Contáctanos</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput [(ngModel)]="contacto.name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Correo</mat-label>
+    <input matInput [(ngModel)]="contacto.email">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Celular</mat-label>
+    <input matInput [(ngModel)]="contacto.phone">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Mensaje</mat-label>
+    <textarea matInput [(ngModel)]="contacto.message"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cerrar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="enviar()">Enviar</button>
+</mat-dialog-actions>

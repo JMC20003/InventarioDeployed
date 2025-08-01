@@ -1,0 +1,62 @@
+<div class="home-container">
+
+<section class="hero-section">
+  <div class="galeria-fila">
+    <img src="https://www.directvsports.com/__export/1732214305847/sites/dsports/img/2024/11/21/camiseta-argentina.jpg_1813886653.jpg" alt="Imagen Grande" class="imagen-galeria imagen-principal">
+    
+    <div class="imagenes-laterales">
+      <img src="https://todosobrecamisetas.com/wp-content/uploads/camiseta-suplente-adidas-river-plate-2022-23-h.jpg" alt="Imagen Lateral 1" class="imagen-galeria imagen-pequena">
+      <img src="https://www.bocashop.com.ar/arquivos/Banner%20de%20Genero%20Hombre.png" alt="Imagen Lateral 2" class="imagen-galeria imagen-pequena">
+    </div>
+  </div>
+</section>
+  <section class="featured-products-section">
+    <h2 class="section-title">Productos Destacados</h2>
+
+    <div class="filter-buttons">
+      <button mat-stroked-button [class.active-filter]="activeFilter === 'todos'" (click)="setFilter('todos')">Todos</button>
+      <button mat-stroked-button [class.active-filter]="activeFilter === 'adultos'" (click)="setFilter('adultos')">Adultos</button>
+      <button mat-stroked-button [class.active-filter]="activeFilter === 'niños'" (click)="setFilter('niños')">Niños</button>
+    </div>
+
+    <div class="products-grid" *ngIf="filteredProducts.length > 0; else noProducts">
+      <mat-card class="product-card" *ngFor="let producto of filteredProducts" [routerLink]="['/producto-detalle', producto.id]">
+        <img mat-card-image [src]=" URL + producto.imagen" alt="{{ producto.nombre }}" class="product-image">
+        <mat-card-content class="product-info">
+          <h3 class="product-name">{{ producto.nombre }}</h3>
+          <p class="product-price">{{ producto.precio | currency:'USD' }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <ng-template #noProducts>
+      <div class="no-products-message">
+        <p>No hay productos disponibles para esta categoría.</p>
+      </div>
+    </ng-template>
+
+  
+  </section>
+
+  <section class="why-us-section">
+    <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+    <div class="usp-grid">
+      <div class="usp-item">
+        <mat-icon>local_shipping</mat-icon>
+        <h3>Envío Rápido</h3>
+        <p>Recibe tus camisetas en tiempo récord.</p>
+      </div>
+      <div class="usp-item">
+        <mat-icon>security</mat-icon>
+        <h3>Pago Seguro</h3>
+        <p>Tus transacciones protegidas con los más altos estándares.</p>
+      </div>
+      <div class="usp-item">
+        <mat-icon>cached</mat-icon>
+        <h3>Cambios Fáciles</h3>
+        <p>¿No te quedó? Te lo cambiamos sin problemas.</p>
+      </div>
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="container-carrito">
+    <h1 class="titulo">Carrito de Compras</h1>
+
+    <div class="cards" *ngIf="productosCarrito && productosCarrito.length > 0; else carritoVacio">
+      <mat-card *ngFor="let producto of productosCarrito" class="producto-card">
+        <div class="contenido-card">
+          <div class="imagenCard">
+            <img mat-card-image [src]="URL + producto.imagen" alt="{{ producto.nombre }}" class="imagen-producto">
+          </div>
+
+          <div class="info-producto">
+            <mat-card-header class="nombreCategoria">
+              <mat-card-title class="nombreCategoria">{{ producto.nombre }}</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+              <p>Talla: {{ producto.tallaSeleccionada }}</p>
+              <p>Precio unitario: {{ producto.precio | currency:'USD' }}</p>
+              <p class="selectOption" routerLink="/inicio">Seleccionar otros productos </p>
+            </mat-card-content>
+
+            <mat-card-actions class="acciones-card">
+              <button mat-icon-button color="primary" (click)="cambiarCantidad(producto, -1)">
+                <mat-icon>remove_circle</mat-icon>
+              </button>
+              <p>{{ producto.cantidad }}</p>
+              <button mat-icon-button color="primary" (click)="cambiarCantidad(producto, 1)">
+                <mat-icon>add_circle</mat-icon>
+              </button>
+
+              <button class="delete-button" mat-raised-button color="warn" (click)="eliminarDelCarrito(producto.id, producto.tallaSeleccionada)">
+                Eliminar
+              </button>
+            </mat-card-actions>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <ng-template #carritoVacio>
+      <div class="carrito-vacio-mensaje">
+        <p>Tu carrito está vacío. ¡Añade algunos productos!</p>
+        <button mat-flat-button color="primary" routerLink="/">Volver a la tienda</button>
+      </div>
+    </ng-template>
+
+    <div class="resumen-pedido" *ngIf="productosCarrito && productosCarrito.length > 0">
+        <h2>Resumen del Pedido</h2>
+        <p>Total de productos: {{ totalItems }}</p>
+        <p>Total a pagar: {{ subtotal | currency:'USD' }}</p>
+    </div>
+
+
+    <div class="boton-comprar" *ngIf="productosCarrito && productosCarrito.length > 0">
+      <button class="demo-button" mat-raised-button (click)="comprarPorWhatsapp()">
+        Comprar por WhatsApp
+      </button>
+    </div>
+  </div>
+</div>

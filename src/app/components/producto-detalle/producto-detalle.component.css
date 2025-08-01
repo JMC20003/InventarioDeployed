@@ -1,0 +1,175 @@
+/* Contenedor principal del detalle del producto */
+.detalle-container {
+  display: flex;
+  flex-direction: column; /* Apila los elementos en pantallas pequeñas (móviles) */
+  gap: 20px; /* Espacio entre la imagen y la información */
+  padding: 20px;
+  max-width: 900px; /* Ancho máximo para el contenedor */
+  margin: 30px auto; /* Centra el contenedor en la página */
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para un efecto elevado */
+}
+
+/* Estilos de la imagen del producto */
+.detalle-imagen {
+  width: 100%; /* La imagen ocupa todo el ancho del contenedor en móviles */
+  max-height: 40rem; /* Altura máxima para la imagen, para evitar que sea demasiado grande */
+  object-fit: cover; /* Recorta la imagen si es necesario para cubrir el área */
+  border-radius: 8px; /* Bordes redondeados para la imagen */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para la imagen */
+}
+
+/* Contenedor de la información del producto */
+.detalle-info {
+  flex-grow: 1; /* Permite que la información ocupe el espacio restante en layouts flexibles */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Título del producto */
+.detalle-info h3 {
+  font-size: 2.2em; /* Tamaño de fuente para el nombre del producto */
+  margin-bottom: 15px;
+  color: #000000;
+  font-weight: 700;
+}
+
+/* Estilos para el texto de Stock y Tallas Disponibles */
+.detalle-info p {
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 1.1em;
+}
+
+
+/* Contenedor de los botones de tallas */
+.tallas-container {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los botones salten de línea si no caben */
+  gap: 10px; /* Espacio entre los botones de talla */
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+/* Estilos base para cada botón de talla */
+.talla-boton {
+  min-width: 60px; /* Ancho mínimo para los botones de talla */
+  padding: 10px 15px; /* Relleno interno */
+  border-radius: 25px; /* Botones más redondeados, tipo píldora */
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  
+  /* Estilos por defecto de Angular Material mat-stroked-button */
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Borde un poco más visible */
+  color: rgba(0, 0, 0, 0.7); /* Color de texto más suave */
+  background-color: transparent;
+}
+
+/* Estado hover para los botones de talla no seleccionados y no deshabilitados */
+.talla-boton:hover:not(.seleccionada):not([disabled]) {
+  background-color: rgba(0, 0, 0, 0.05); /* Un ligero hover state */
+  border-color: rgba(0, 0, 0, 0.4); /* El borde se oscurece un poco */
+}
+
+/* **Estado seleccionado: Esto es lo que "pinta" el botón** */
+.talla-boton.seleccionada {
+  background-color: #555; /* Color primario de Material Design */
+  color: white;
+  border-color: #000000;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(63, 81, 181, 0.3); /* Sombra para resaltar la selección */
+}
+
+/* Estilos para tallas deshabilitadas (ej. sin stock) */
+.talla-boton[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f5f5f5; /* Fondo gris claro */
+  color: #b0b0b0; /* Texto más claro */
+  border-color: #e0e0e0;
+  box-shadow: none;
+}
+
+/* Descripción del producto */
+.detalle-info p.descripcion {
+  margin-top: 15px; /* Espacio superior para la descripción */
+  line-height: 1.6; /* Mayor espacio entre líneas para legibilidad */
+  color: #444;
+}
+
+/* Botón "Añadir al carrito" */
+.detalle-info button {
+  margin-top: 25px; /* Espacio superior para separar del texto */
+  padding: 12px 25px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 8px; /* Bordes ligeramente redondeados */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Sombra para el botón principal */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detalle-info button:hover:not([disabled]) {
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada en hover */
+}
+
+.detalle-info button[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background-color: #cccccc; /* Un color gris si está deshabilitado */
+    color: #888888;
+}
+
+/* Estilos para el mensaje de carga */
+ng-template#cargando p {
+  text-align: center;
+  font-size: 1.5em;
+  color: #777;
+  padding: 50px;
+}
+
+/* --- Media Queries para Responsividad --- */
+
+/* Tablet y Desktop (768px y más) */
+@media (min-width: 768px) {
+  .detalle-container {
+    flex-direction: row; /* La imagen y la información van una al lado de la otra */
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+  }
+
+  .detalle-imagen {
+    width: 45%; /* La imagen ocupa el 45% del ancho */
+    max-width: 400px; /* Ancho máximo para la imagen */
+    flex-shrink: 0; /* Evita que la imagen se encoja si el espacio es limitado */
+  }
+
+  .detalle-info {
+    width: 55%; /* La información ocupa el 55% del ancho */
+    padding-left: 20px; /* Espacio a la izquierda de la información */
+  }
+
+  .detalle-info h2 {
+    font-size: 2.5em; /* Ajusta el tamaño de la fuente para pantallas más grandes */
+  }
+
+  .precio {
+    font-size: 2.2em; /* Ajusta el tamaño del precio */
+  }
+}
+
+/* Desktop más grande (1024px y más) */
+@media (min-width: 1024px) {
+  .detalle-container {
+    padding: 30px; /* Mayor padding en pantallas grandes */
+    gap: 30px; /* Mayor espacio entre elementos */
+  }
+
+  .detalle-info h2 {
+    font-size: 2.8em;
+  }
+
+  .precio {
+    font-size: 2.5em;
+  }
+}

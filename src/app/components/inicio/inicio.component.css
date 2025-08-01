@@ -1,0 +1,378 @@
+/* Contenedor principal */
+.home-container {
+  font-family: 'Arial', sans-serif;
+  color: #000000;
+}
+
+/* hero-section.css */
+
+.hero-section {
+    width: 100%;
+    /* Aumentamos la altura mínima para acomodar el diseño vertical más alto */
+    min-height: 850px; /* Ajustado: antes 450px */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-image: linear-gradient(to right, #1a1a1a, #4a0000); 
+    box-sizing: border-box;
+}
+
+.galeria-fila {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    max-width: 1200px;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+/* Estilo para todas las imágenes en la galería */
+.imagen-galeria {
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.imagen-galeria:hover {
+    transform: scale(1.01);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* IMAGEN PRINCIPAL (GRANDE) */
+.imagen-principal {
+    flex: 1;
+    width: 50%;
+    /* ¡NUEVO! Altura fija y más pronunciada para un aspecto vertical más grande */
+    height: 815px; /* Ajustado: antes 400px */
+    max-height: 80vh; /* Para evitar que sea excesivamente alta en pantallas muy grandes */
+    min-width: 250px;
+}
+
+/* CONTENEDOR DE IMÁGENES LATERALES */
+.imagenes-laterales {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* IMÁGENES PEQUEÑAS LATERALES */
+.imagen-pequena {
+    width: 100%;
+    /* ¡NUEVO! Altura calculada para que 2 + gap = altura de la grande */
+    /* (500px - 15px de gap) / 2 = 242.5px */
+    height: 400px; /* Ajustado: antes 192.5px */
+    max-height: 38vh; /* Controla la altura máxima para que no sean enormes */
+    min-width: 120px;
+}
+
+/* --- Media Queries para Responsividad --- */
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 400px; /* Ajustado */
+        padding: 15px;
+    }
+
+    .galeria-fila {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .imagen-principal {
+        width: 80%;
+        height: 350px; /* Ajustado */
+        min-width: unset;
+    }
+
+    .imagenes-laterales {
+        width: 80%;
+        height: auto;
+        gap: 10px;
+    }
+
+    .imagen-pequena {
+        height: 170px; /* Ajustado: (350px - 10px) / 2 = 170px */
+        min-width: unset;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        min-height: 300px; /* Ajustado */
+        padding: 10px;
+    }
+
+    .galeria-fila {
+        gap: 15px;
+    }
+
+    .imagen-principal {
+        width: 90%;
+        height: 280px; /* Ajustado */
+    }
+
+    .imagenes-laterales {
+        width: 90%;
+        gap: 8px;
+    }
+
+    .imagen-pequena {
+        height: 136px; /* Ajustado: (280px - 8px) / 2 = 136px */
+    }
+}
+
+/* --- Resto de los estilos (mantén los de las secciones de productos, filtros, etc.) --- */
+
+.section-title {
+  text-align: center;
+  font-size: 2.8em;
+  margin: 60px 0 30px;
+  color: #000000;
+  font-weight: 600;
+}
+
+.filter-buttons {
+  text-align: center;
+  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 0 15px;
+}
+
+.filter-buttons button {
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-size: 1.05em;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  border: 1px solid #3f51b5;
+  color: #3f51b5;
+  background-color: transparent;
+}
+
+.filter-buttons button:hover:not(.active-filter) {
+  background-color: rgba(63, 81, 181, 0.08);
+}
+
+.filter-buttons button.active-filter {
+  background-color: #3f51b5;
+  color: white;
+  border-color: #3f51b5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.products-grid {
+  display: grid;
+  gap: 25px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto 50px auto;
+  grid-template-columns: 1fr;
+}
+
+.product-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.product-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+  width: 100%;
+  height: 22rem;
+  object-fit:cover;
+  border-bottom: 1px solid #eee;
+}
+
+.product-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.product-name {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.product-price {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #e91e63;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.view-all-button {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.view-all-button button {
+  padding: 12px 35px;
+  font-size: 1.15em;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.view-all-button button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.why-us-section {
+  background-color: #f8f8f8;
+  padding: 60px 20px;
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+.usp-grid {
+  display: grid;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+
+.usp-item {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.usp-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.usp-item mat-icon {
+  font-size: 3.5em;
+  width: 1em;
+  height: 1em;
+  color: #3f51b5;
+  margin-bottom: 15px;
+}
+
+.usp-item h3 {
+  font-size: 1.5em;
+  color: #000000;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.usp-item p {
+  font-size: 1em;
+  color: #666;
+  line-height: 1.5;
+}
+
+.no-products-message {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.3em;
+    color: #777;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* --- Media Queries para Responsividad --- */
+
+/* Teléfonos pequeños (menos de 480px) - Ajustes finos */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2.2em; /* Más pequeño para móviles */
+  }
+  .hero-content p {
+    font-size: 0.95em;
+  }
+  .hero-content button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+  .hero-content {
+      padding: 20px; /* Menor padding para móviles */
+  }
+}
+
+/* Tablet (mínimo 600px de ancho) */
+@media (min-width: 600px) {
+  .hero-content {
+      max-width: 500px; /* Ajusta el ancho del texto */
+      padding: 35px;
+  }
+  .hero-content h1 {
+    font-size: 3.5em;
+  }
+  .hero-content p {
+    font-size: 1.3em;
+  }
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .usp-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* Desktop (mínimo 900px de ancho) */
+@media (min-width: 900px) {
+  .hero-content {
+      max-width: 600px; /* Ajusta el ancho del texto */
+      padding: 40px;
+  }
+  .hero-content h1 {
+    font-size: 4em;
+  }
+  .hero-content p {
+    font-size: 1.4em;
+  }
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .usp-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop Grande (mínimo 1200px de ancho) */
+@media (min-width: 1200px) {
+  .hero-section {
+    padding: 0 8%; /* Mayor padding lateral en pantallas grandes */
+  }
+  .hero-content h1 {
+    font-size: 4.5em;
+  }
+  .hero-content p {
+    font-size: 1.5em;
+  }
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

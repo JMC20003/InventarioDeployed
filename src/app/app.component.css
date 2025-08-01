@@ -1,0 +1,20 @@
+:host, 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 150vh; /* todo el alto de la pantalla */
+}
+
+.contenido-principal {
+  flex: 1; /* ocupa todo el espacio entre header y footer */
+  background-color: whitesmoke;
+  padding: 15px;
+}
+.header{
+    background-color: #fde811;
+}

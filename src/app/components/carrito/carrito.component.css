@@ -1,0 +1,205 @@
+/* Estilos generales del contenedor del carrito */
+.container {
+  padding: 20px;
+  max-width: 1200px; /* Ancho máximo para el carrito */
+  margin: 20px auto;
+}
+
+.container-carrito {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.titulo {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #000000;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+/* Estilos de las cards de producto */
+.cards {
+  display: grid;
+  gap: 20px; /* Espacio entre las cards */
+  /* Por defecto, una columna para pantallas pequeñas */
+  grid-template-columns: 1fr;
+  margin-bottom: 30px;
+}
+
+.producto-card {
+  display: flex; /* Flexbox para el contenido de la card */
+  flex-direction: column; /* Por defecto apilado para móviles */
+  border-radius: 8px;
+  overflow: hidden; /* Asegura que la imagen se vea bien */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.contenido-card {
+  display: flex;
+  flex-direction: column; /* Por defecto apilado para móviles */
+  width: 100%;
+}
+
+.imagenCard {
+  width: 100%; /* La imagen ocupa todo el ancho de la card en móviles */
+  max-height: 30rem; /* Altura máxima para la imagen */
+  overflow: hidden; /* Corta la imagen si es demasiado grande */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen-producto {
+  width: 100%; /* La imagen se ajusta al ancho de su contenedor */
+  height: auto;
+  object-fit: cover; /* Ajusta la imagen sin distorsionarla */
+}
+
+.info-producto {
+  flex-grow: 1; /* Ocupa el espacio restante */
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.nombreCategoria mat-card-title {
+  font-size: 1.4em;
+  font-weight: 500;
+  color: #000000; /* Color primario de Material Design */
+}
+
+mat-card-content p {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+mat-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Espacia los elementos */
+  margin-top: auto; /* Empuja las acciones al final de la card */
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.acciones-card button {
+  margin: 0 5px;
+}
+
+.delete-button {
+  background-color: #f44336; /* Rojo de Material Design */
+  color: white;
+  margin-left: auto; /* Empuja el botón eliminar a la derecha */
+}
+
+.selectOption:hover{
+  cursor: pointer;
+  color:rgb(0, 0, 0)
+}
+/* Resumen del pedido */
+.resumen-pedido {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+    text-align: right;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.resumen-pedido h2 {
+    font-size: 1.8em;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.resumen-pedido p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Botón de comprar por WhatsApp */
+.boton-comprar {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.demo-button {
+  background-color: #25d366; /* Verde de WhatsApp */
+  color: white;
+  padding: 12px 30px;
+  font-size: 1.1em;
+  border-radius: 50px; /* Botón redondo */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.demo-button:hover {
+  background-color: #1da851;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Mensaje de carrito vacío */
+.carrito-vacio-mensaje {
+    text-align: center;
+    padding: 50px 20px;
+    font-size: 1.3em;
+    color: #777;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+.carrito-vacio-mensaje button {
+    margin-top: 20px;
+}
+
+/* --- Media Queries para Responsividad --- */
+
+/* Tablet (768px y más) */
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 2 o 3 columnas */
+  }
+
+  .producto-card {
+    flex-direction: row; /* En tablet y desktop, la imagen y la info van lado a lado */
+  }
+
+  .contenido-card {
+    flex-direction: row; /* Contenido de la card en fila */
+  }
+
+  .imagenCard {
+    width: 150px; /* Ancho fijo para la imagen en cards de carrito */
+    height: 150px; /* Altura fija para la imagen */
+    flex-shrink: 0; /* Evita que la imagen se encoja */
+    padding: 10px;
+  }
+
+  .imagen-producto {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+  }
+
+  .info-producto {
+    padding: 15px 20px;
+  }
+}
+
+/* Desktop (1024px y más) */
+@media (min-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas grandes */
+  }
+
+  .titulo {
+    font-size: 3em;
+  }
+}

@@ -1,0 +1,113 @@
+<div class="formulario-producto">
+  <h2>Gestión de Productos</h2> <mat-form-field appearance="outline">
+    <mat-label>Nombre del Producto</mat-label>
+    <input id="nombre" matInput type="text" name="nombre" [(ngModel)]="producto.nombre" required>
+    <mat-icon matSuffix>badge</mat-icon> </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Precio</mat-label>
+    <input id="precio" matInput type="number" step="0.1" name="precio" [(ngModel)]="producto.precio" required>
+    <mat-icon matSuffix>attach_money</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Stock</mat-label>
+    <input id="stock" matInput type="number" step="1" name="stock" [(ngModel)]="producto" required>
+    <mat-icon matSuffix>inventory</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Talla</mat-label>
+    <input id="talla" matInput type="text" step="1" name="talla" [(ngModel)]="producto" required>
+    <mat-icon matSuffix>talla</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+  <mat-label>Categoría</mat-label>
+  <mat-select id="categoria" name="categoria" [(ngModel)]="producto.categoria" required>
+    <mat-option value="adultos">Adultos</mat-option>
+    <mat-option value="niños">Niños</mat-option>
+    </mat-select>
+  <mat-icon matSuffix>category</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Descripción</mat-label>
+    <input id="descripcion" matInput type="text" name="descripcion" [(ngModel)]="producto.descripcion" required>
+    <mat-icon matSuffix>description</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+  <mat-label>Imagen (URL de Google Drive)</mat-label>
+  <input id="imagen" matInput type="text" name="imagen" [(ngModel)]="producto.imagen" required>
+  <mat-icon matSuffix>image</mat-icon>
+  </mat-form-field>
+
+  <div class="botones">
+    <button class="guardar-btn" mat-raised-button color="primary" (click)="AgregarProducto()"> Agregar Producto </button>
+    <button class="cancelar-btn" mat-raised-button color="accent" (click)="ModificarProducto()" (click)="limpiarFormulario()"> Cancelar </button>
+  </div>
+  </div>
+
+  <div class="table-container">
+  <mat-form-field appearance="outline"> <mat-label>Buscar producto...</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input placeholder="Ej. Camiseta ">
+    <mat-icon matSuffix>search</mat-icon> </mat-form-field>
+
+  <table mat-table [dataSource]="dsLista" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element" data-label="ID"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element" data-label="Nombre"> {{element.nombre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef> Precio </th>
+      <td mat-cell *matCellDef="let element" data-label="Precio"> {{element.precio | currency:'USD':'symbol':'1.2-2'}} </td> </ng-container>
+
+    <ng-container matColumnDef="tallas">
+      <th mat-header-cell *matHeaderCellDef> Talla </th>
+      <td mat-cell *matCellDef="let element" data-label="Tallas"> {{element.talla}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="stock">
+      <th mat-header-cell *matHeaderCellDef> Stock </th>
+      <td mat-cell *matCellDef="let element" data-label="Stock"> {{element.stock}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="categoria">
+      <th mat-header-cell *matHeaderCellDef> Categoría </th>
+      <td mat-cell *matCellDef="let element" data-label="Categoría"> {{element.categoria}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+      <td mat-cell *matCellDef="let element" data-label="Descripcion"> {{element.descripcion}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="imagen">
+      <th mat-header-cell *matHeaderCellDef> Imagen </th>
+      <td mat-cell *matCellDef="let element" data-label="Imagen"> {{element.imagen}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element" data-label="Acciones">
+        <mat-icon aria-hidden="false" aria-label="Eliminar producto" fontIcon="delete" (click)="EliminarProducto(element.id)"></mat-icon>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="7">No se encontraron productos que coincidan con "{{input.value}}"</td>
+    </tr>
+
+  </table>
+</div>

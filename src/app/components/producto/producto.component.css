@@ -1,0 +1,239 @@
+/* Contenedor principal de la página de gestión de productos */
+.gestion-productos-container {
+  padding: 20px;
+  max-width: 1200px; /* Limita el ancho máximo del contenido */
+  margin: 30px auto; /* Centra el contenedor en la página */
+  font-family: 'Roboto', sans-serif; /* Consistencia con Angular Material */
+  color: #333;
+}
+
+/* Estilos para el formulario de gestión de productos */
+.formulario-producto {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+  margin-bottom: 40px; /* Espacio entre el formulario y la tabla */
+  display: grid; /* Usamos grid para organizar los campos */
+  gap: 20px; /* Espacio entre los campos */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Columna adaptable */
+  align-items: end; /* Alinea los elementos al final de su celda */
+}
+
+.formulario-producto h2 {
+  grid-column: 1 / -1; /* Ocupa todas las columnas disponibles */
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2.2em;
+  color: #3f51b5; /* Color primario de Material Design */
+  font-weight: 600;
+}
+
+/* Estilo general para los campos de Material Design */
+.formulario-producto mat-form-field {
+  width: 100%; /* Ocupa todo el ancho de su celda en la cuadrícula */
+  margin-bottom: 0; /* Ya tenemos gap en el grid */
+}
+
+
+
+/* Contenedor de botones del formulario */
+.botones {
+  grid-column: 1 / -1; /* Ocupa todas las columnas */
+  display: flex;
+  justify-content: center; /* Centra los botones */
+  gap: 15px; /* Espacio entre los botones */
+  margin-top: 20px;
+}
+
+.botones button {
+  padding: 12px 30px;
+  font-size: 1.1em;
+  border-radius: 8px; /* Bordes ligeramente redondeados */
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.botones button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para el botón de cancelar (accent) */
+.cancelar-btn {
+  background-color: #f44336; /* Un rojo para el botón de cancelar */
+  color: white;
+}
+
+/* Contenedor de la tabla */
+.table-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas para la tabla */
+}
+
+.table-container mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Estilos de la tabla de Material */
+.mat-elevation-z8 {
+  width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
+  min-width: 700px; /* Mínimo ancho para la tabla para evitar que los elementos se amontonen */
+  border-collapse: collapse; /* Elimina espacio entre celdas */
+}
+
+/* Estilos de las celdas de encabezado */
+.mat-header-cell {
+  font-weight: 700;
+  color: #3f51b5; /* Color primario para los encabezados */
+  background-color: #e8eaf6; /* Fondo suave para los encabezados */
+  padding: 15px;
+  text-align: left;
+  border-bottom: 2px solid #3f51b5;
+  white-space: nowrap; /* Evita que el texto del encabezado se rompa */
+}
+
+/* Estilos de las celdas de datos */
+.mat-cell {
+  padding: 12px 15px;
+  color: #555;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+  position: relative; /* Necesario para data-label en responsividad */
+  white-space: nowrap; /* Evita que el texto de la celda se rompa */
+  overflow: hidden; /* Oculta el texto que se desborda */
+  text-overflow: ellipsis; /* Añade puntos suspensivos */
+  max-width: 150px; /* Limita el ancho de la celda para mantener la tabla compacta */
+}
+
+/* Estilos de las filas impares para mejor legibilidad */
+.mat-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Efecto hover en las filas */
+.mat-row:hover {
+  background-color: #f0f4c3; /* Un color suave al pasar el mouse */
+  cursor: pointer;
+}
+
+/* Ajuste específico para la columna de acciones */
+.mat-column-acciones .mat-icon {
+  cursor: pointer;
+  color: #f44336; /* Color rojo para el icono de eliminar */
+  font-size: 24px;
+  transition: transform 0.2s ease;
+}
+
+.mat-column-acciones .mat-icon:hover {
+  transform: scale(1.1);
+  color: #d32f2f;
+}
+
+/* Mensaje cuando no hay datos en la tabla */
+.mat-no-data-row {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  font-style: italic;
+}
+
+/* --- Media Queries para Responsividad --- */
+
+/* Tablets (min-width: 768px) */
+@media (min-width: 768px) {
+  .formulario-producto {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas para campos */
+  }
+
+  .formulario-producto h2 {
+    font-size: 2.5em;
+  }
+
+  /* La tabla usará overflow-x: auto en pantallas más pequeñas, pero en desktop se ve normal */
+  .mat-elevation-z8 {
+    min-width: auto; /* Desactiva el min-width en pantallas grandes */
+  }
+
+  .mat-cell {
+    max-width: none; /* Desactiva el max-width en pantallas grandes para que el texto se vea completo */
+    white-space: normal; /* Permite que el texto se rompa si es necesario */
+  }
+}
+
+/* Desktop (min-width: 1024px) */
+@media (min-width: 1024px) {
+  .formulario-producto {
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas para campos */
+  }
+  /* Botones alineados a la derecha del formulario en desktop */
+  .botones {
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+    grid-column: 1 / -1; /* Sigue ocupando todo el ancho */
+  }
+}
+
+/* Mobile-first approach for table on small screens */
+/* Esto ocultará los encabezados de la tabla y usará data-label */
+@media screen and (max-width: 767px) {
+  .mat-table {
+    border: 0;
+    box-shadow: none;
+  }
+
+  .mat-table caption {
+    font-size: 1.3em;
+  }
+
+  .mat-header-row {
+    display: none; /* Oculta la fila de encabezados en móviles */
+  }
+
+  .mat-row {
+    display: block; /* Cada fila se comporta como un bloque */
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden; /* Para las sombras */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .mat-cell {
+    border-bottom: 1px solid #eee;
+    display: block; /* Cada celda se comporta como un bloque */
+    text-align: right; /* Alinea el valor a la derecha */
+    font-size: 0.9em;
+    padding: 10px 15px;
+    white-space: normal; /* Permite que el texto se rompa */
+    overflow: visible; /* Asegura que todo el contenido sea visible */
+    text-overflow: clip; /* No usa ellipsis */
+    max-width: none; /* No limita el ancho */
+  }
+
+  .mat-cell:before {
+    content: attr(data-label); /* Usa el atributo data-label para el encabezado */
+    float: left; /* Alinea el label a la izquierda */
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #3f51b5; /* Color del label */
+    margin-right: 10px;
+  }
+
+  /* Ajuste para la columna de acciones en móvil */
+  .mat-column-acciones {
+      text-align: center; /* Centra el icono en la celda */
+      padding: 10px;
+      display: flex; /* Para centrar con flex */
+      justify-content: center;
+      align-items: center;
+      background-color: #e8eaf6; /* Fondo para la fila de acciones */
+  }
+  .mat-column-acciones:before {
+      display: none; /* Oculta el label "Acciones" en móvil */
+  }
+}

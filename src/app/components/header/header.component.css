@@ -1,0 +1,69 @@
+.sidenav-container {
+    height: 64px;
+    position: relative; /* O fixed si quieres que el contenedor siempre esté en la parte superior */
+    z-index: 1000; /* Un z-index alto para la base de la navegación */
+  }
+  .sidenav {
+  /* Mat-sidenav ya suele tener position: fixed, pero un z-index explícito es clave */
+  z-index: 1001; /* Asegúrate que este sea el más alto */
+  /* Si el sidenav es transparente y no se ve bien sobre el contenido,
+     puedes darle un color de fondo explícito. Material suele aplicarlo, pero por si acaso. */
+  background-color: rgb(238, 238, 238); /* Usa la variable de Material o un color fijo */
+}
+
+/* Opcional: Asegurarse de que el toolbar también tenga un z-index decente si hay otros elementos */
+.mat-toolbar {
+  position: relative; /* Es importante que tenga position diferente de static para que z-index funcione */
+  z-index: 990; /* Menor que el sidenav, pero mayor que el contenido normal */
+}
+  .logo-nombre {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    height: 60px;
+    width: 60px;
+    margin-right: 8px;
+  }
+  
+  .nombre-empresa {
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .menu-button {
+    display: none;
+    color: rgb(0, 0, 0);
+  }
+  a:hover{
+    background-color: #94095c;
+  }
+  button:hover{
+    background-color: #94095c;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+  
+    .menu-button {
+      display: inline-flex;
+    }
+  }
+  
+  .sidenav {
+    width: 200px;
+  }
+  
