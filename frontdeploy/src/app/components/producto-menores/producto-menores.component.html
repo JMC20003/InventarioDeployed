@@ -13,7 +13,7 @@
       [routerLink]="['/producto-detalle', producto.id]"
     >
       <div class="imagen-wrapper">
-        <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}" class="producto-imagen">
+        <img mat-card-image [src]="URL + producto.imagen" alt="{{ producto.nombre }}" class="producto-imagen">
       </div>
       
       <mat-card-content class="card-content-area">

@@ -1,5 +1,5 @@
 <div class="detalle-container" *ngIf="producto as p; else cargando">
-  <img class="detalle-imagen" [src]="p.imagen" alt="{{ p.nombre }}" />
+  <img class="detalle-imagen" [src]="URL + p.imagen" alt="{{ p.nombre }}" />
   <div class="detalle-info">
     <h3>{{ producto.nombre }}</h3>
     <p class="precio">

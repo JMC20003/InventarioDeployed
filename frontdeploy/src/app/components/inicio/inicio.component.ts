@@ -15,7 +15,7 @@ export class InicioComponent implements OnInit {
  productos: Productodto[] = [];
   filteredProducts: Productodto[] = [];
   activeFilter: string = 'todos';
-
+  URL = 'http://localhost:8080'
   constructor(private productoService: ProductoServiceService) {}
 
   ngOnInit(): void {

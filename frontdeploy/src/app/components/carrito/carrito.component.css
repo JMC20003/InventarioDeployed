@@ -45,7 +45,7 @@
 
 .imagenCard {
   width: 100%; /* La imagen ocupa todo el ancho de la card en móviles */
-  max-height: 200px; /* Altura máxima para la imagen */
+  max-height: 30rem; /* Altura máxima para la imagen */
   overflow: hidden; /* Corta la imagen si es demasiado grande */
   display: flex;
   justify-content: center;

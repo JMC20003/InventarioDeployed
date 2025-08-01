@@ -13,7 +13,7 @@ export class CarritoComponent implements OnInit {
   productosCarrito: CartItem[] = [];
   subtotal: number = 0;
   totalItems: number = 0;
-
+  URL = 'http://localhost:8080'
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {

@@ -12,7 +12,8 @@ import { Productodto } from '../../models/productodto';
 })
 export class ProductoAdultosComponent {
   productosAdultos: Productodto[] = [];
-
+  URL = 'http://localhost:8080'
+  
   constructor(private productoService: ProductoServiceService) {}
 
   ngOnInit(): void {

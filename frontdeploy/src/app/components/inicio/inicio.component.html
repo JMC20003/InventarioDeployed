@@ -21,7 +21,7 @@
 
     <div class="products-grid" *ngIf="filteredProducts.length > 0; else noProducts">
       <mat-card class="product-card" *ngFor="let producto of filteredProducts" [routerLink]="['/producto-detalle', producto.id]">
-        <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}" class="product-image">
+        <img mat-card-image [src]=" URL + producto.imagen" alt="{{ producto.nombre }}" class="product-image">
         <mat-card-content class="product-info">
           <h3 class="product-name">{{ producto.nombre }}</h3>
           <p class="product-price">{{ producto.precio | currency:'USD' }}</p>

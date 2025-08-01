@@ -196,8 +196,8 @@
 
 .product-image {
   width: 100%;
-  height: 280px;
-  object-fit: cover;
+  height: 22rem;
+  object-fit:cover;
   border-bottom: 1px solid #eee;
 }
 

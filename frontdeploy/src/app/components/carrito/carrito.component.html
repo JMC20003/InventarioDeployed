@@ -6,7 +6,7 @@
       <mat-card *ngFor="let producto of productosCarrito" class="producto-card">
         <div class="contenido-card">
           <div class="imagenCard">
-            <img mat-card-image [src]="producto.imagen" alt="{{ producto.nombre }}" class="imagen-producto">
+            <img mat-card-image [src]="URL + producto.imagen" alt="{{ producto.nombre }}" class="imagen-producto">
           </div>
 
           <div class="info-producto">

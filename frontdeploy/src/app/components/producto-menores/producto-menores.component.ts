@@ -12,7 +12,7 @@ import { Productodto } from '../../models/productodto';
 })
 export class ProductoMenoresComponent {
   productosNinos: Productodto[] = [];
-
+  URL = 'http://localhost:8080'
   constructor(private productoService: ProductoServiceService) {}
 
   ngOnInit(): void {

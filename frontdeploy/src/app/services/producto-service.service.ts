@@ -8,8 +8,8 @@ import { Productodto } from '../models/productodto';
 })
 export class ProductoServiceService {
 
- private baseUrl = 'https://api.tiendarjsc.site/api/productos';
-  //private baseUrl = 'http://localhost:8080/api/productos';
+  //private baseUrl = 'https://api.tiendarjsc.site/api/productos';
+  private baseUrl = 'http://localhost:8080/api/productos';
   constructor(private clientHTTP: HttpClient ) { }
   obtenerTodosLosProductos(){
     return this.clientHTTP.get<Productodto[]>(this.baseUrl + "/listar")

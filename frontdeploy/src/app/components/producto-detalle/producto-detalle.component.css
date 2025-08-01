@@ -14,7 +14,7 @@
 /* Estilos de la imagen del producto */
 .detalle-imagen {
   width: 100%; /* La imagen ocupa todo el ancho del contenedor en móviles */
-  max-height: 400px; /* Altura máxima para la imagen, para evitar que sea demasiado grande */
+  max-height: 40rem; /* Altura máxima para la imagen, para evitar que sea demasiado grande */
   object-fit: cover; /* Recorta la imagen si es necesario para cubrir el área */
   border-radius: 8px; /* Bordes redondeados para la imagen */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para la imagen */
