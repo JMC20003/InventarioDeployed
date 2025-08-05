@@ -13,7 +13,7 @@ import { Productodto } from '../../models/productodto';
   styleUrl: './producto-detalle.component.css'
 })
 export class ProductoDetalleComponent {
-  URL = 'http://localhost:8080' 
+  URL = 'https://api.tiendarjsc.site' 
   producto!: Productodto;
   tallaSeleccionada: string | null = null;
 
